@@ -35,20 +35,23 @@ body {
   float: right;
   margin-right: 10px;
 }
-#post-container {
-  width: 100%;
+.post-container {
+  z-index: -1;
+  position: relative;
+  margin: auto;
+  width: 70%;
   border-radius: 10px;
   border-color: black;
   border-width: thick;
   border-style: outset;
   background-color: rgb(120, 243, 141);
 }
-#content {
+.content {
   font-size: larger;
   border-color: black;
   border-width: 5px;
 }
-#post-info {
+.post-info {
   font-size: xx-small;
 }
 .new-post {
@@ -57,4 +60,14 @@ body {
   font-size: large;
   margin-top: 10px;
   margin-left: 10px;
+}
+.interactions { 
+  display: flex;
+  margin-left: 10px;
+}
+
+.interactions > div > button {
+  background-color: rgb(37, 126, 10);
+  font-size: xx-small;
+  color: white;
 }
