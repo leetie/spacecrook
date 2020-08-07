@@ -41,7 +41,7 @@ body {
   border-color: black;
   border-width: thick;
   border-style: outset;
-  background-color: rgb(48, 224, 77);
+  background-color: rgb(120, 243, 141);
 }
 #content {
   font-size: larger;
@@ -50,4 +50,11 @@ body {
 }
 #post-info {
   font-size: xx-small;
+}
+.new-post {
+  color: black;
+  float: left;
+  font-size: large;
+  margin-top: 10px;
+  margin-left: 10px;
 }

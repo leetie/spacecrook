@@ -16,6 +16,9 @@
             <%= link_to 'Login', new_user_session_path %>
           <% end %>
         </div>
+        <div class="new-post">
+          <%= link_to 'Post to your Page!', new_user_post_path(current_user.id) %>
+        </div>
       </div>
 
   </head>

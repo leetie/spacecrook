@@ -1,7 +1,7 @@
 <div id="post-container">
   <div id="content">
     <div id="post-info">
-      <p>Created by <%= User.find(post.user_id).email %></p>
+      <p>Created by <%= User.find(post.user_id).email %> <%= distance_of_time_in_words(post.created_at, Time.now) %> ago</p>
     </div>
     <%= post.body %>
   </div>

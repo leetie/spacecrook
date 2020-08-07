@@ -11,10 +11,8 @@
     </div>
   <% end %>
 	<div class="text-area">
-		<%= form.text_area "post[body]" %>
-    <% if current_user %>
-      <%= form.hidden_field "post[user_id]", value: current_user.id %>
-    <% end %>
+    <%= form.label :body %>
+		<%= form.text_area :body %>
 	</div>
   <div class="actions">
     <%= form.submit %>

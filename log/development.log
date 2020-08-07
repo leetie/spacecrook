@@ -7903,3 +7903,2145 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 33ms (Views: 25.4ms | ActiveRecord: 2.0ms | Allocations: 12252)
 
 
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."id" DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+Started GET "/users/1/posts/new" for 127.0.0.1 at 2020-08-07 15:47:09 -0400
+Processing by PostsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 2.8ms | Allocations: 895)
+  Rendered posts/new.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1238)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 21ms (Views: 11.9ms | ActiveRecord: 0.4ms | Allocations: 6432)
+
+
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."id" DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Destroy (9.5ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 11]]
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."id" DESC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 11]]
+  [1m[36mComment Destroy (1.0ms)[0m  [1m[31mDELETE FROM "comments" WHERE "comments"."id" = $1[0m  [["id", 5]]
+  [1m[36mComment Destroy (0.8ms)[0m  [1m[31mDELETE FROM "comments" WHERE "comments"."id" = $1[0m  [["id", 6]]
+  [1m[36mComment Destroy (0.8ms)[0m  [1m[31mDELETE FROM "comments" WHERE "comments"."id" = $1[0m  [["id", 7]]
+  [1m[36mComment Destroy (0.7ms)[0m  [1m[31mDELETE FROM "comments" WHERE "comments"."id" = $1[0m  [["id", 8]]
+  [1m[36mPost Destroy (1.5ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 11]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/posts" for 127.0.0.1 at 2020-08-07 15:48:08 -0400
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"EjPITdPDlf7M0C72qDl8W+ENnBwu0/+19ZvQr1ut7Qx6/0oEtPfCK9b8ezfHz7VoRDuOLt8+w4U8YDNMESurGw==", "post"=>{"post"=>{"body"=>"Second Post", "user_id"=>"1"}}, "commit"=>"Create Post"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[31mUnpermitted parameter: :post[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:31:in `block in create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:31:in `block in create'
+  [1m[36mPost Create (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("created_at", "updated_at", "user_id") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2020-08-07 19:48:08.859708"], ["updated_at", "2020-08-07 19:48:08.859708"], ["user_id", 1]]
+  ↳ app/controllers/posts_controller.rb:31:in `block in create'
+  [1m[35m (4.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:31:in `block in create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 62ms (ActiveRecord: 17.5ms | Allocations: 14927)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 15:48:08 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.8ms | Allocations: 391)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.3ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 39.1ms | Allocations: 7368)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.8ms | Allocations: 320)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 7.9ms | Allocations: 1884)
+  Rendered posts/index.html.erb within layouts/application (Duration: 50.5ms | Allocations: 10082)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 68ms (Views: 54.2ms | ActiveRecord: 7.0ms | Allocations: 15276)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 15:50:01 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.2ms | Allocations: 634)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.5ms | Allocations: 123)
+  Rendered posts/_tile.html.erb (Duration: 9.4ms | Allocations: 2911)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.4ms | Allocations: 328)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 7.2ms | Allocations: 1893)
+  Rendered posts/index.html.erb within layouts/application (Duration: 20.3ms | Allocations: 5933)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 34ms (Views: 28.5ms | ActiveRecord: 1.5ms | Allocations: 12149)
+
+
+Started GET "/users/1/posts/new" for 127.0.0.1 at 2020-08-07 15:50:05 -0400
+Processing by PostsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 5.9ms | Allocations: 956)
+  Rendered posts/new.html.erb within layouts/application (Duration: 9.2ms | Allocations: 1296)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 37ms (Views: 26.0ms | ActiveRecord: 0.6ms | Allocations: 6489)
+
+
+Started POST "/posts" for 127.0.0.1 at 2020-08-07 15:50:09 -0400
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"Bgvlr1TPaGMxILutUHSBRU35TcBuoLljzbIgVwPYwNRux2fmM/s/tisM7mw/gkh26M9f8p9NhVMEScO0SV6Gww==", "post"=>{"body"=>"third post", "post"=>{"user_id"=>"1"}}, "commit"=>"Create Post"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[31mUnpermitted parameter: :post[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:31:in `block in create'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:31:in `block in create'
+  [1m[36mPost Create (1.5ms)[0m  [1m[32mINSERT INTO "posts" ("created_at", "updated_at", "body", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2020-08-07 19:50:09.993714"], ["updated_at", "2020-08-07 19:50:09.993714"], ["body", "third post"], ["user_id", 1]]
+  ↳ app/controllers/posts_controller.rb:31:in `block in create'
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:31:in `block in create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 61ms (ActiveRecord: 4.4ms | Allocations: 5658)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 15:50:10 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 4.8ms | Allocations: 332)
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.3ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 24.0ms | Allocations: 2099)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 5.3ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 20.6ms | Allocations: 1884)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.5ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 22.2ms | Allocations: 1886)
+  Rendered posts/index.html.erb within layouts/application (Duration: 77.0ms | Allocations: 6756)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 125ms (Views: 101.9ms | ActiveRecord: 4.6ms | Allocations: 11879)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 15:51:23 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 5.1ms | Allocations: 634)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.5ms | Allocations: 123)
+  Rendered posts/_tile.html.erb (Duration: 16.9ms | Allocations: 2909)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.6ms | Allocations: 328)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 10.6ms | Allocations: 1893)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 23.5ms | Allocations: 1886)
+  Rendered posts/index.html.erb within layouts/application (Duration: 60.3ms | Allocations: 7878)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 91ms (Views: 77.0ms | ActiveRecord: 1.7ms | Allocations: 14101)
+
+
+Started POST "/comments" for 127.0.0.1 at 2020-08-07 15:51:35 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"hZqW4Xi4oet7Tpv8O3U1xaCBg43XmR05QIpflKtKFnjtVhSoH4z2PmFizj1Ug/z2BbeRvyZ0IQmJcbx34cxQbw==", "comment"=>{"user_id"=>"1", "post_id"=>"13", "body"=>"hey"}, "commit"=>"Post Comment"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:30:in `block in create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:30:in `block in create'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:30:in `block in create'
+  [1m[36mComment Create (0.8ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "body", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["body", "hey"], ["post_id", 13], ["created_at", "2020-08-07 19:51:35.061495"], ["updated_at", "2020-08-07 19:51:35.061495"]]
+  ↳ app/controllers/comments_controller.rb:30:in `block in create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:30:in `block in create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 22ms (ActiveRecord: 2.7ms | Allocations: 7682)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 15:51:35 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.3ms | Allocations: 334)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.1ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 8.8ms | Allocations: 2101)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 5.2ms | Allocations: 1884)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.8ms | Allocations: 320)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.2ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 8.2ms | Allocations: 1914)
+  Rendered posts/index.html.erb within layouts/application (Duration: 26.0ms | Allocations: 6786)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 37ms (Views: 31.0ms | ActiveRecord: 2.1ms | Allocations: 11914)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 15:53:04 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 3.8ms | Allocations: 634)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 1.7ms | Allocations: 123)
+  Rendered posts/_tile.html.erb (Duration: 23.2ms | Allocations: 2911)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.9ms | Allocations: 328)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 11.3ms | Allocations: 1893)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.8ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.2ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 12.4ms | Allocations: 1914)
+  Rendered posts/index.html.erb within layouts/application (Duration: 57.0ms | Allocations: 7910)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 94ms (Views: 77.4ms | ActiveRecord: 3.6ms | Allocations: 14178)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 15:53:44 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.1ms | Allocations: 334)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.3ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 7.7ms | Allocations: 2101)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.6ms | Allocations: 1884)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 6.8ms | Allocations: 1917)
+  Rendered posts/index.html.erb within layouts/application (Duration: 24.3ms | Allocations: 6786)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 65ms (Views: 59.8ms | ActiveRecord: 1.9ms | Allocations: 19222)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 15:53:58 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 331)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.1ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 5.3ms | Allocations: 2098)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.0ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.8ms | Allocations: 1884)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.1ms | Allocations: 320)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 7.5ms | Allocations: 1917)
+  Rendered posts/index.html.erb within layouts/application (Duration: 22.4ms | Allocations: 6782)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 49ms (Views: 43.5ms | ActiveRecord: 1.9ms | Allocations: 18884)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 15:54:13 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.0ms | Allocations: 331)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.6ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 16.8ms | Allocations: 2098)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.9ms | Allocations: 320)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 15.8ms | Allocations: 1884)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.5ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.2ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 12.1ms | Allocations: 1914)
+  Rendered posts/index.html.erb within layouts/application (Duration: 50.9ms | Allocations: 6779)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 99ms (Views: 85.8ms | ActiveRecord: 3.8ms | Allocations: 20489)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 15:54:19 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.0ms | Allocations: 331)
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.3ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 14.6ms | Allocations: 2098)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.9ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 13.8ms | Allocations: 1884)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.4ms | Allocations: 320)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.2ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 13.8ms | Allocations: 1914)
+  Rendered posts/index.html.erb within layouts/application (Duration: 48.4ms | Allocations: 6779)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 78ms (Views: 64.8ms | ActiveRecord: 4.5ms | Allocations: 11894)
+
+
+Started GET "/users/1/posts/new" for 127.0.0.1 at 2020-08-07 15:54:21 -0400
+Processing by PostsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 2.8ms | Allocations: 774)
+  Rendered posts/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1119)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 11.6ms | ActiveRecord: 0.3ms | Allocations: 6367)
+
+
+Started POST "/posts" for 127.0.0.1 at 2020-08-07 15:54:29 -0400
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"iqhHoZcrxag5W/r56E54UXTHzrMekOdTDfDr8S0MDJgga9MsI98AkLajp8EuCTv0N1Yq2SaKS1G1xzyq68mNpw==", "post"=>{"body"=>"another post"}, "commit"=>"Create Post"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:31:in `block in create'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:31:in `block in create'
+  [1m[36mPost Create (1.3ms)[0m  [1m[32mINSERT INTO "posts" ("created_at", "updated_at", "body", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2020-08-07 19:54:29.189076"], ["updated_at", "2020-08-07 19:54:29.189076"], ["body", "another post"], ["user_id", 1]]
+  ↳ app/controllers/posts_controller.rb:31:in `block in create'
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:31:in `block in create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 36ms (ActiveRecord: 4.9ms | Allocations: 5651)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 15:54:29 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.7ms | Allocations: 332)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.3ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 14.9ms | Allocations: 2099)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.6ms | Allocations: 320)
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 10.3ms | Allocations: 1884)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.3ms | Allocations: 320)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.4ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 14.2ms | Allocations: 1914)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.9ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.2ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 16.1ms | Allocations: 1886)
+  Rendered posts/index.html.erb within layouts/application (Duration: 62.6ms | Allocations: 8737)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 87ms (Views: 73.5ms | ActiveRecord: 4.8ms | Allocations: 13889)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 15:54:53 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.8ms | Allocations: 331)
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.4ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 17.3ms | Allocations: 2098)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.7ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 13.8ms | Allocations: 1884)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.7ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.2ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 12.5ms | Allocations: 1914)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.6ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 13.1ms | Allocations: 1886)
+  Rendered posts/index.html.erb within layouts/application (Duration: 63.6ms | Allocations: 8733)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 125ms (Views: 109.4ms | ActiveRecord: 4.7ms | Allocations: 21613)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 15:55:43 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.2ms | Allocations: 331)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.2ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 8.9ms | Allocations: 2098)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.1ms | Allocations: 1884)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.1ms | Allocations: 320)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 6.9ms | Allocations: 1914)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.2ms | Allocations: 1886)
+  Rendered posts/index.html.erb within layouts/application (Duration: 31.7ms | Allocations: 8733)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 66ms (Views: 57.7ms | ActiveRecord: 2.5ms | Allocations: 21247)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 15:56:05 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 331)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.1ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 6.3ms | Allocations: 2098)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 320)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.4ms | Allocations: 1884)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.2ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 7.0ms | Allocations: 1914)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.4ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 7.4ms | Allocations: 1886)
+  Rendered posts/index.html.erb within layouts/application (Duration: 29.8ms | Allocations: 8733)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 61ms (Views: 55.9ms | ActiveRecord: 2.2ms | Allocations: 20760)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 15:56:32 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 331)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.2ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 7.0ms | Allocations: 2098)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 320)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.3ms | Allocations: 1884)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 4.6ms | Allocations: 1914)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 320)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.2ms | Allocations: 1886)
+  Rendered posts/index.html.erb within layouts/application (Duration: 27.1ms | Allocations: 8733)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 55ms (Views: 48.5ms | ActiveRecord: 2.5ms | Allocations: 22430)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 15:56:35 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.1ms | Allocations: 331)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.4ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 15.3ms | Allocations: 2098)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.5ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 14.4ms | Allocations: 1884)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.6ms | Allocations: 320)
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.2ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 14.2ms | Allocations: 1914)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.5ms | Allocations: 320)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 11.4ms | Allocations: 1886)
+  Rendered posts/index.html.erb within layouts/application (Duration: 61.2ms | Allocations: 8733)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 88ms (Views: 74.7ms | ActiveRecord: 4.8ms | Allocations: 13865)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 15:56:42 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.2ms | Allocations: 331)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.1ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 8.0ms | Allocations: 2098)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.1ms | Allocations: 1884)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.0ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 5.5ms | Allocations: 1914)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.7ms | Allocations: 1886)
+  Rendered posts/index.html.erb within layouts/application (Duration: 31.3ms | Allocations: 8733)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 46ms (Views: 38.4ms | ActiveRecord: 2.3ms | Allocations: 14299)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 15:57:27 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.2ms | Allocations: 331)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.1ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 7.0ms | Allocations: 2098)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.2ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 8.6ms | Allocations: 1884)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.2ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 8.2ms | Allocations: 1914)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.0ms | Allocations: 320)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 7.4ms | Allocations: 1886)
+  Rendered posts/index.html.erb within layouts/application (Duration: 34.8ms | Allocations: 8733)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 68ms (Views: 60.5ms | ActiveRecord: 2.5ms | Allocations: 21673)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 15:58:51 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 4.7ms | Allocations: 634)
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 1.1ms | Allocations: 123)
+  Rendered posts/_tile.html.erb (Duration: 21.6ms | Allocations: 2911)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.0ms | Allocations: 328)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 11.6ms | Allocations: 1893)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.6ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.5ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 15.1ms | Allocations: 1914)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.7ms | Allocations: 320)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 11.4ms | Allocations: 1886)
+  Rendered posts/index.html.erb within layouts/application (Duration: 69.0ms | Allocations: 9866)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 99ms (Views: 85.2ms | ActiveRecord: 4.9ms | Allocations: 16141)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 15:59:20 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.1ms | Allocations: 334)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.2ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 6.9ms | Allocations: 2101)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.6ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.4ms | Allocations: 1884)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.5ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 9.5ms | Allocations: 1914)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.0ms | Allocations: 320)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 5.9ms | Allocations: 1886)
+  Rendered posts/index.html.erb within layouts/application (Duration: 31.8ms | Allocations: 8737)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 61ms (Views: 55.2ms | ActiveRecord: 2.4ms | Allocations: 21228)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:00:50 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.4ms | Allocations: 634)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.6ms | Allocations: 123)
+  Rendered posts/_tile.html.erb (Duration: 13.9ms | Allocations: 2909)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.4ms | Allocations: 328)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 8.1ms | Allocations: 1893)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.1ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.2ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 7.2ms | Allocations: 1914)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.1ms | Allocations: 320)
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 8.6ms | Allocations: 1886)
+  Rendered posts/index.html.erb within layouts/application (Duration: 48.5ms | Allocations: 9860)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 76ms (Views: 59.6ms | ActiveRecord: 3.9ms | Allocations: 16125)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:01:33 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.9ms | Allocations: 334)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.3ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 18.4ms | Allocations: 2101)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.2ms | Allocations: 320)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 10.6ms | Allocations: 1884)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.6ms | Allocations: 320)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.2ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 10.2ms | Allocations: 1914)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.2ms | Allocations: 320)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 8.2ms | Allocations: 1886)
+  Rendered posts/index.html.erb within layouts/application (Duration: 55.5ms | Allocations: 8737)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 94ms (Views: 82.3ms | ActiveRecord: 4.2ms | Allocations: 20751)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:02:53 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.1ms | Allocations: 331)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.2ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 9.7ms | Allocations: 2098)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.6ms | Allocations: 320)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 8.6ms | Allocations: 1884)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.3ms | Allocations: 320)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 7.7ms | Allocations: 1914)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.9ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.6ms | Allocations: 1886)
+  Rendered posts/index.html.erb within layouts/application (Duration: 35.6ms | Allocations: 8733)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 67ms (Views: 60.7ms | ActiveRecord: 2.3ms | Allocations: 22811)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:03:02 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.2ms | Allocations: 331)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.2ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 9.1ms | Allocations: 2098)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 5.8ms | Allocations: 1884)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.3ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 6.7ms | Allocations: 1914)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 5.4ms | Allocations: 1886)
+  Rendered posts/index.html.erb within layouts/application (Duration: 31.5ms | Allocations: 8733)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 50ms (Views: 44.5ms | ActiveRecord: 2.3ms | Allocations: 14333)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:03:25 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.1ms | Allocations: 331)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.1ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 8.0ms | Allocations: 2098)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 4.7ms | Allocations: 1884)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.6ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 8.6ms | Allocations: 1914)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.1ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 7.7ms | Allocations: 1886)
+  Rendered posts/index.html.erb within layouts/application (Duration: 32.4ms | Allocations: 8733)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 47ms (Views: 41.3ms | ActiveRecord: 2.5ms | Allocations: 13900)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:03:41 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.1ms | Allocations: 331)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.1ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 7.3ms | Allocations: 2099)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 5.0ms | Allocations: 1884)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 6.7ms | Allocations: 1914)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.4ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 7.4ms | Allocations: 1886)
+  Rendered posts/index.html.erb within layouts/application (Duration: 30.0ms | Allocations: 8734)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 56ms (Views: 50.4ms | ActiveRecord: 2.1ms | Allocations: 20359)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:05:11 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered posts/_tile.html.erb (Duration: 13.1ms | Allocations: 3401)
+  Rendered posts/index.html.erb within layouts/application (Duration: 18.0ms | Allocations: 4467)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.9ms | Allocations: 7358)
+
+
+  
+ActionView::Template::Error (undefined method `distance_of_time_in_words' for Fri, 07 Aug 2020 18:14:08 UTC +00:00:Time):
+    1: <div id="post-container">
+    2:   <div id="content">
+    3:     <div id="post-info">
+    4:       <p>Created by <%= User.find(post.user_id).email %> <%= post.created_at.distance_of_time_in_words %> ago</p>
+    5:     </div>
+    6:     <%= post.body %>
+    7:   </div>
+  
+app/views/posts/_tile.html.erb:4
+app/views/posts/index.html.erb:7
+app/views/posts/index.html.erb:6
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:05:46 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 4.6ms | Allocations: 634)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.6ms | Allocations: 123)
+  Rendered posts/_tile.html.erb (Duration: 15.8ms | Allocations: 2993)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.0ms | Allocations: 328)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 9.0ms | Allocations: 1951)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.5ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 6.7ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.9ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.1ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 43.6ms | Allocations: 10111)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 61ms (Views: 53.1ms | ActiveRecord: 2.5ms | Allocations: 16381)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:06:35 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 334)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.2ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 6.9ms | Allocations: 2155)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.9ms | Allocations: 1938)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.2ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 6.4ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.5ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 5.5ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 29.2ms | Allocations: 8953)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 59ms (Views: 52.3ms | ActiveRecord: 2.0ms | Allocations: 22263)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:06:48 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.3ms | Allocations: 331)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.1ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 8.1ms | Allocations: 2152)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 4.5ms | Allocations: 1938)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 4.5ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.2ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 8.9ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 29.3ms | Allocations: 8949)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 58ms (Views: 50.8ms | ActiveRecord: 1.9ms | Allocations: 21861)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:07:55 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 331)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.1ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 6.9ms | Allocations: 2152)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.0ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 5.1ms | Allocations: 1938)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.1ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 6.7ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.0ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 7.5ms | Allocations: 1941)
+  Rendered posts/index.html.erb within layouts/application (Duration: 29.0ms | Allocations: 8950)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 40ms (Views: 34.6ms | ActiveRecord: 1.9ms | Allocations: 14090)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:08:08 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.2ms | Allocations: 331)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.1ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 9.5ms | Allocations: 2152)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 5.5ms | Allocations: 1938)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.3ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 9.2ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.0ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 33.6ms | Allocations: 8949)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 63ms (Views: 57.0ms | ActiveRecord: 2.5ms | Allocations: 20967)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:08:14 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.4ms | Allocations: 331)
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.6ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 29.7ms | Allocations: 2152)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.9ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 13.9ms | Allocations: 1938)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.1ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.2ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 13.9ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.5ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 15.4ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 79.6ms | Allocations: 8949)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 105ms (Views: 92.4ms | ActiveRecord: 4.3ms | Allocations: 14133)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:08:35 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 4.8ms | Allocations: 634)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 1.3ms | Allocations: 123)
+  Rendered posts/_tile.html.erb (Duration: 23.7ms | Allocations: 2978)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 3.1ms | Allocations: 328)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 16.8ms | Allocations: 1948)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.2ms | Allocations: 320)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.4ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 16.7ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.7ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 16.5ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 85.4ms | Allocations: 10096)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 120ms (Views: 106.6ms | ActiveRecord: 4.7ms | Allocations: 16319)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:09:22 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.6ms | Allocations: 634)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.6ms | Allocations: 123)
+  Rendered posts/_tile.html.erb (Duration: 11.2ms | Allocations: 2976)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.1ms | Allocations: 328)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 7.5ms | Allocations: 1947)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 7.7ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.1ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.4ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 36.9ms | Allocations: 10089)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 52ms (Views: 45.2ms | ActiveRecord: 2.3ms | Allocations: 16312)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:09:31 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.6ms | Allocations: 634)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.6ms | Allocations: 123)
+  Rendered posts/_tile.html.erb (Duration: 10.2ms | Allocations: 2978)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 328)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 5.7ms | Allocations: 1947)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 320)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 6.0ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.1ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 7.0ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 32.9ms | Allocations: 10092)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 47ms (Views: 39.4ms | ActiveRecord: 2.3ms | Allocations: 16325)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:10:22 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.9ms | Allocations: 634)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 1.2ms | Allocations: 123)
+  Rendered posts/_tile.html.erb (Duration: 11.7ms | Allocations: 2976)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 328)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 4.8ms | Allocations: 1947)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.5ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 5.6ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.4ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 33.3ms | Allocations: 10089)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 47ms (Views: 40.4ms | ActiveRecord: 2.0ms | Allocations: 16743)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:10:48 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.6ms | Allocations: 634)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.4ms | Allocations: 123)
+  Rendered posts/_tile.html.erb (Duration: 10.8ms | Allocations: 2976)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 328)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 7.6ms | Allocations: 1947)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 6.0ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 5.2ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 33.7ms | Allocations: 10089)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 51ms (Views: 43.7ms | ActiveRecord: 2.3ms | Allocations: 16305)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:11:25 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 4.4ms | Allocations: 634)
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 1.1ms | Allocations: 123)
+  Rendered posts/_tile.html.erb (Duration: 24.5ms | Allocations: 2909)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.7ms | Allocations: 328)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 15.9ms | Allocations: 1893)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.9ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.2ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 16.3ms | Allocations: 1914)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.7ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 15.5ms | Allocations: 1886)
+  Rendered posts/index.html.erb within layouts/application (Duration: 84.0ms | Allocations: 9860)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 120ms (Views: 105.3ms | ActiveRecord: 4.7ms | Allocations: 16070)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:11:32 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.4ms | Allocations: 634)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 1.0ms | Allocations: 123)
+  Rendered posts/_tile.html.erb (Duration: 10.7ms | Allocations: 2976)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 328)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 5.5ms | Allocations: 1947)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 6.0ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.2ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 7.7ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 33.9ms | Allocations: 10089)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 49ms (Views: 42.5ms | ActiveRecord: 1.8ms | Allocations: 16302)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:11:54 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.5ms | Allocations: 985)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.7ms | Allocations: 127)
+  Rendered posts/_tile.html.erb (Duration: 33.6ms | Allocations: 11960)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 328)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 5.5ms | Allocations: 1953)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 320)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 6.1ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.0ms | Allocations: 320)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.4ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 65.7ms | Allocations: 21615)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 160ms (Views: 107.1ms | ActiveRecord: 17.1ms | Allocations: 48168)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:11:57 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.1ms | Allocations: 334)
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.6ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 18.0ms | Allocations: 2155)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.6ms | Allocations: 320)
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 17.2ms | Allocations: 1939)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 3.7ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.2ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 18.5ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.7ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 13.5ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 76.1ms | Allocations: 8956)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 106ms (Views: 88.6ms | ActiveRecord: 6.2ms | Allocations: 14067)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:12:19 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 3.0ms | Allocations: 634)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.6ms | Allocations: 123)
+  Rendered posts/_tile.html.erb (Duration: 14.7ms | Allocations: 2977)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.4ms | Allocations: 328)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.5ms | Allocations: 1948)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.1ms | Allocations: 320)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 7.6ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.2ms | Allocations: 320)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 7.5ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 44.1ms | Allocations: 10092)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 67ms (Views: 54.6ms | ActiveRecord: 3.7ms | Allocations: 16369)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:12:42 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.1ms | Allocations: 392)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.1ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 22.5ms | Allocations: 7378)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.4ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 7.1ms | Allocations: 1938)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.0ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 5.3ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.4ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.0ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 52.5ms | Allocations: 16491)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 88ms (Views: 53.8ms | ActiveRecord: 13.7ms | Allocations: 27974)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:12:55 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.8ms | Allocations: 331)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.7ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 18.4ms | Allocations: 2152)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.6ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 14.1ms | Allocations: 1938)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 3.1ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.2ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 14.4ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.0ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 13.5ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 69.8ms | Allocations: 8949)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 98ms (Views: 82.2ms | ActiveRecord: 5.7ms | Allocations: 14277)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:13:22 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.1ms | Allocations: 331)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.1ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 7.3ms | Allocations: 2152)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 5.0ms | Allocations: 1938)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.2ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 7.5ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.5ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 30.4ms | Allocations: 8949)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 41ms (Views: 35.6ms | ActiveRecord: 2.3ms | Allocations: 14120)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:13:37 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.7ms | Allocations: 331)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.5ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 15.6ms | Allocations: 2152)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.6ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 13.6ms | Allocations: 1939)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.4ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.2ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 18.4ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.3ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 16.3ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 72.3ms | Allocations: 8951)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 125ms (Views: 111.4ms | ActiveRecord: 5.0ms | Allocations: 22006)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:13:44 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.0ms | Allocations: 331)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.1ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 8.2ms | Allocations: 2152)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.4ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.2ms | Allocations: 1938)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.3ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 6.8ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.1ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 7.2ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 32.3ms | Allocations: 8949)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 62ms (Views: 53.7ms | ActiveRecord: 2.5ms | Allocations: 21340)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:15:04 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.3ms | Allocations: 331)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.1ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 9.2ms | Allocations: 2152)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.2ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.8ms | Allocations: 1938)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 5.9ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 5.8ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 32.9ms | Allocations: 8949)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 62ms (Views: 55.8ms | ActiveRecord: 2.6ms | Allocations: 21810)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:15:19 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.0ms | Allocations: 331)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.3ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 6.3ms | Allocations: 2152)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.0ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.3ms | Allocations: 1938)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.1ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 8.2ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 5.0ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 30.1ms | Allocations: 8949)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 58ms (Views: 52.2ms | ActiveRecord: 2.1ms | Allocations: 21772)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:15:33 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.2ms | Allocations: 331)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.1ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 6.9ms | Allocations: 2152)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.0ms | Allocations: 1938)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.1ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 7.7ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 6.6ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 31.9ms | Allocations: 8949)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 58ms (Views: 52.2ms | ActiveRecord: 2.3ms | Allocations: 20539)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:15:48 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 331)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.1ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 6.8ms | Allocations: 2152)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 5.4ms | Allocations: 1938)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.0ms | Allocations: 320)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 7.0ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 5.1ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 27.5ms | Allocations: 8949)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 58ms (Views: 51.7ms | ActiveRecord: 2.3ms | Allocations: 22622)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 16:16:12 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 2.6ms | Allocations: 331)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [4 times] (Duration: 0.3ms | Allocations: 36)
+  Rendered posts/_tile.html.erb (Duration: 15.1ms | Allocations: 2152)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 12.4ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 12]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 23.5ms | Allocations: 1939)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.7ms | Allocations: 320)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 13]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.2ms | Allocations: 12)
+  Rendered posts/_tile.html.erb (Duration: 13.7ms | Allocations: 1968)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_tile.html.erb:4
+  Rendered comments/_form.html.erb (Duration: 1.8ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
+  ↳ app/views/posts/_tile.html.erb:11
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_tile.html.erb (Duration: 14.1ms | Allocations: 1940)
+  Rendered posts/index.html.erb within layouts/application (Duration: 74.5ms | Allocations: 8950)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 130ms (Views: 115.7ms | ActiveRecord: 4.9ms | Allocations: 23093)
+
+
