@@ -15,10 +15,10 @@
  */
 
 body {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin-top: 85px;
   text-align: center;
   background-color: rgb(222, 243, 200);
-  font-size: large;
 }
 .navbar {
   height: 70px;
@@ -34,4 +34,20 @@ body {
   color: black;
   float: right;
   margin-right: 10px;
+}
+#post-container {
+  width: 100%;
+  border-radius: 10px;
+  border-color: black;
+  border-width: thick;
+  border-style: outset;
+  background-color: rgb(48, 224, 77);
+}
+#content {
+  font-size: larger;
+  border-color: black;
+  border-width: 5px;
+}
+#post-info {
+  font-size: xx-small;
 }

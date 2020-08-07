@@ -1,0 +1,11 @@
+<div id="post-container">
+  <div id="content">
+    <div id="post-info">
+      <p>Created by <%= User.find(post.user_id).email %></p>
+    </div>
+    <%= post.body %>
+  </div>
+  <div id="interactions">
+  </div>
+  <%= render 'comments/form', current_user: current_user.id, comment: Comment.new, post_id: post.id %>
+</div>
