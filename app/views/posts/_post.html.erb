@@ -15,6 +15,9 @@
     <div class="interaction-container">
       <button class="show-comments">Show <%= post.comments.count %> Comments</button>
     </div>
+    <div class="comment-counter">
+      <p><%= post.likes %> likes</p>
+    </div>
   </div>
   <%= render 'comments/form', current_user: current_user.id, comment: Comment.new, post_id: post.id %>
 

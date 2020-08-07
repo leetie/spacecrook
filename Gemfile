@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.1'
+# Use attribute-defaults for activerecord defaults
+gem 'attribute-defaults'
 gem 'devise'
 gem 'dotenv'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
