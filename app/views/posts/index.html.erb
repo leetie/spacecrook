@@ -12,14 +12,13 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <p>Posted by <%= User.find(post.user_id).email %>!</p>
+        <%= post.body %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+        <%=  link_to 'New post', new_user_post_path %>
 
-<%= link_to 'New Post', new_post_path %>
