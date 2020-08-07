@@ -8,4 +8,5 @@
   <div id="interactions">
   </div>
   <%= render 'comments/form', current_user: current_user.id, comment: Comment.new, post_id: post.id %>
+  <%= render partial: "comments/comment", collection: post.comments %>
 </div>
