@@ -1,13 +1,14 @@
 <div class="post-container">
   <div class="content">
     <div class="post-info">
-      <p>Created by <%= User.find(post.user_id).name %> <%= distance_of_time_in_words(post.created_at, Time.now) %> ago</p>
-    </div>
+      <div class="user-info">
+        <p>Created by <%= User.find(post.user_id).name %> <%= distance_of_time_in_words(post.created_at, Time.now) %> ago</p>
+      </div>
+    </div><br>
     <%= post.body %>
   </div>
   <div class="interactions">
     <div class="interaction-container">
-      <button class="like-button">Like</button>
     </div>
     <div class="interaction-container">
       <button class="show-comment-form">Expand form</button>
@@ -15,11 +16,8 @@
     <div class="interaction-container">
       <button class="show-comments">Show <%= post.comments.count %> Comments</button>
     </div>
-    <div class="comment-counter">
-      <p><%= post.likes %> likes</p>
-    </div>
   </div>
   <%= render 'comments/form', current_user: current_user.id, comment: Comment.new, post_id: post.id %>
-
+  
   <%= render partial: "comments/comment", collection: post.comments %>
 </div>

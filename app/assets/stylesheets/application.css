@@ -36,7 +36,6 @@ body {
   margin-right: 10px;
 }
 .post-container {
-  z-index: -1;
   position: relative;
   margin: auto;
   width: 70%;
@@ -52,7 +51,11 @@ body {
   border-width: 5px;
 }
 .post-info {
+  display: inline-flex;
   font-size: xx-small;
+}
+.like-counter {
+  margin-right: 20px;
 }
 .new-post {
   color: black;
@@ -67,6 +70,11 @@ body {
 }
 
 .interactions > div > button {
+  background-color: rgb(37, 126, 10);
+  font-size: xx-small;
+  color: white;
+}
+.like-button {
   background-color: rgb(37, 126, 10);
   font-size: xx-small;
   color: white;
