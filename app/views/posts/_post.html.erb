@@ -1,6 +1,9 @@
 <div class="post-container">
   <div class="content">
     <div class="post-info">
+      <div class="like-counter">
+        <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+      </div>
       <div class="user-info">
         <p>Created by <%= User.find(post.user_id).name %> <%= distance_of_time_in_words(post.created_at, Time.now) %> ago</p>
       </div>
@@ -9,6 +12,7 @@
   </div>
   <div class="interactions">
     <div class="interaction-container">
+      <%= button_to "Like", post_likes_path(post), method: "post", class: "like-button" %>
     </div>
     <div class="interaction-container">
       <button class="show-comment-form">Expand form</button>

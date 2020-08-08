@@ -7,8 +7,7 @@
 /log/*
 /tmp/*
 !log/.keep
-!/tmp/.keep
-
+./tmp/*
 /tmp/pids/*
 !/tmp/pids/
 !/tmp/pids/.keep
