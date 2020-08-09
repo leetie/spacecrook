@@ -5,11 +5,11 @@ class Post < ApplicationRecord
   has_one_attached :picture, dependent: :destroy
   validate :acceptable_image
 
-  
+
   def acceptable_image
     return unless picture.attached?
 
-    unless picture.byte_size <= 1.megabyte
+    unless picture.byte_size <= 5.megabyte
       errors.add(:picture, "is too big")
     end
 

@@ -38,7 +38,7 @@ class PostsController < ApplicationController
         @post.errors.each do |error|
           STDOUT.puts error
         end
-        format.html { redirect_to new_user_post_path(current_user.id) }
+        format.html { redirect_to new_user_post_path(current_user.id), notice: @post.errors.full_messages }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
