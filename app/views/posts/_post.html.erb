@@ -10,6 +10,11 @@
     </div><br>
     <%= post.body %>
   </div>
+  <div class="post-picture">
+    <% if post.picture.attached? %>
+      <%= image_tag post.picture %>
+    <% end %>
+  </div>
   <div class="interactions">
     <div class="interaction-container">
       <% pre_like = post.likes.find { |like| like.user_id == current_user.id }%>

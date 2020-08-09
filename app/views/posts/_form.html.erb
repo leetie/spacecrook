@@ -14,6 +14,10 @@
     <%= form.label :body %>
 		<%= form.text_area :body %>
 	</div>
+  <div class="image-upload">
+    <%= form.label :picture %>
+    <%= form.file_field :picture %>
+  </div>
   <div class="actions">
     <%= form.submit %>
   </div>
