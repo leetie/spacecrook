@@ -19677,3 +19677,2495 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 35ms (Views: 28.3ms | ActiveRecord: 2.9ms | Allocations: 14827)
 
 
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 21:54:58 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 2.1ms | Allocations: 321)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.2ms | Allocations: 12)
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 1.9ms | Allocations: 320)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [2 times] (Duration: 65.6ms | Allocations: 8747)
+  Rendered posts/index.html.erb within layouts/application (Duration: 71.2ms | Allocations: 9625)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 97ms (Views: 81.1ms | ActiveRecord: 7.1ms | Allocations: 14841)
+
+
+Started POST "/posts/22/likes" for 127.0.0.1 at 2020-08-07 21:55:13 -0400
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"RXC4JDMEYKsM8w7NrhrJtgmsSuxNbzw9t3hE4EWhNkauGb+No4wxu23PO5l7mO2+jUV8M6WXq8DGOv3qfXyJWw==", "post_id"=>"22"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:12:in `set_post'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[36mLike Create (0.5ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["post_id", 22], ["user_id", 1], ["created_at", "2020-08-08 01:55:13.590677"], ["updated_at", "2020-08-08 01:55:13.590677"]]
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 15ms (ActiveRecord: 2.2ms | Allocations: 6636)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 21:55:13 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 321)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [2 times] (Duration: 24.1ms | Allocations: 8747)
+  Rendered posts/index.html.erb within layouts/application (Duration: 26.4ms | Allocations: 9625)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 37ms (Views: 29.9ms | ActiveRecord: 3.3ms | Allocations: 14861)
+
+
+Started POST "/posts/22/likes" for 127.0.0.1 at 2020-08-07 21:55:14 -0400
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"u/xKT5jw1DH+692kW0Pm3sX0/mc4JybAv1tDCwTMmh9QlU3mCHiFIZ/X6PCOwcLWQR3IuNDfsT3OGfoBPBElAg==", "post_id"=>"22"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:12:in `set_post'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[36mLike Create (0.4ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["post_id", 22], ["user_id", 1], ["created_at", "2020-08-08 01:55:14.262080"], ["updated_at", "2020-08-08 01:55:14.262080"]]
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 14ms (ActiveRecord: 2.1ms | Allocations: 6639)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 21:55:14 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 321)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [2 times] (Duration: 21.2ms | Allocations: 8747)
+  Rendered posts/index.html.erb within layouts/application (Duration: 23.3ms | Allocations: 9625)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 33ms (Views: 26.3ms | ActiveRecord: 3.3ms | Allocations: 14829)
+
+
+Started POST "/posts/22/likes" for 127.0.0.1 at 2020-08-07 21:55:14 -0400
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"A9oJpumVyOO+XD0HWB0JKG2yzOBgCDeMrBybhZVPAbDosw4PeR2Z899gCFONny0g6Vv6P4jwoHHdXiKPrZK+rQ==", "post_id"=>"22"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:12:in `set_post'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[36mLike Create (0.4ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["post_id", 22], ["user_id", 1], ["created_at", "2020-08-08 01:55:14.846822"], ["updated_at", "2020-08-08 01:55:14.846822"]]
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 15ms (ActiveRecord: 2.0ms | Allocations: 6625)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 21:55:14 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 2.1ms | Allocations: 321)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 1.9ms | Allocations: 320)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [2 times] (Duration: 33.3ms | Allocations: 8747)
+  Rendered posts/index.html.erb within layouts/application (Duration: 36.5ms | Allocations: 9625)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 49ms (Views: 39.1ms | ActiveRecord: 4.4ms | Allocations: 14829)
+
+
+Started POST "/posts/22/likes" for 127.0.0.1 at 2020-08-07 21:55:15 -0400
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"LB5yMBEsQXnHJKAcvgZMAXhzrRnPuICb30oAyhY6CF3Hd3WZgaQQaaYYlUhrhGgJ/JqbxidAF2auCLnALue3QA==", "post_id"=>"22"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:12:in `set_post'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[36mLike Create (0.4ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["post_id", 22], ["user_id", 1], ["created_at", "2020-08-08 01:55:15.122848"], ["updated_at", "2020-08-08 01:55:15.122848"]]
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 17ms (ActiveRecord: 2.3ms | Allocations: 6615)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 21:55:15 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 1.1ms | Allocations: 321)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.2ms | Allocations: 12)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [2 times] (Duration: 28.8ms | Allocations: 8748)
+  Rendered posts/index.html.erb within layouts/application (Duration: 31.7ms | Allocations: 9626)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 43ms (Views: 35.1ms | ActiveRecord: 3.1ms | Allocations: 14844)
+
+
+Started POST "/posts/22/likes" for 127.0.0.1 at 2020-08-07 21:55:15 -0400
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"mGFHmVDxby6flFV4VJ4BEW+VCXCXzicFMoxaFU+DnCZzCEAwwHk+Pv6oYCyBHCUZ63w/r382sPhDzuMfd14jOw==", "post_id"=>"22"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:12:in `set_post'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[36mLike Create (0.4ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["post_id", 22], ["user_id", 1], ["created_at", "2020-08-08 01:55:15.419354"], ["updated_at", "2020-08-08 01:55:15.419354"]]
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 15ms (ActiveRecord: 1.9ms | Allocations: 6632)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 21:55:15 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 321)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [2 times] (Duration: 23.5ms | Allocations: 8747)
+  Rendered posts/index.html.erb within layouts/application (Duration: 26.5ms | Allocations: 9625)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 36ms (Views: 29.6ms | ActiveRecord: 3.0ms | Allocations: 14851)
+
+
+Started POST "/posts/22/likes" for 127.0.0.1 at 2020-08-07 21:55:15 -0400
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"C8aKrPXWBrENcxSjGUPxA8lNuRUg8C3daqJCJw9AdWPgr40FZV5XoWxPIffMwdULTaSPysgIuiAb4PstN53Kfg==", "post_id"=>"22"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:12:in `set_post'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[36mLike Create (0.4ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["post_id", 22], ["user_id", 1], ["created_at", "2020-08-08 01:55:15.756625"], ["updated_at", "2020-08-08 01:55:15.756625"]]
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 15ms (ActiveRecord: 2.0ms | Allocations: 6631)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 21:55:15 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 321)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [2 times] (Duration: 21.9ms | Allocations: 8747)
+  Rendered posts/index.html.erb within layouts/application (Duration: 24.7ms | Allocations: 9625)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 34ms (Views: 27.9ms | ActiveRecord: 3.0ms | Allocations: 14847)
+
+
+Started POST "/posts/22/likes" for 127.0.0.1 at 2020-08-07 21:55:16 -0400
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"E5s82p196vN3ZidItSYR0yzchekRKz8jXndh25uRYrj48jtzDfW74xZaEhxgpDXbqDWzNvnTqN4vNdjRo0zdpQ==", "post_id"=>"22"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:12:in `set_post'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[36mLike Create (0.8ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["post_id", 22], ["user_id", 1], ["created_at", "2020-08-08 01:55:16.276546"], ["updated_at", "2020-08-08 01:55:16.276546"]]
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 16ms (ActiveRecord: 2.6ms | Allocations: 6619)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 21:55:16 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 321)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [2 times] (Duration: 26.3ms | Allocations: 8747)
+  Rendered posts/index.html.erb within layouts/application (Duration: 28.9ms | Allocations: 9625)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 38ms (Views: 31.1ms | ActiveRecord: 3.7ms | Allocations: 14833)
+
+
+Started POST "/posts/22/likes" for 127.0.0.1 at 2020-08-07 21:55:16 -0400
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"i9B9iY5/QrvXuvi7EkdnEwuZ9n4tbtOotA5ogyvpT71guXogHvcTq7aGze/HxUMbj3DAocWWRFXFTNGJEzTwoA==", "post_id"=>"22"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:12:in `set_post'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[36mLike Create (0.4ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["post_id", 22], ["user_id", 1], ["created_at", "2020-08-08 01:55:16.619468"], ["updated_at", "2020-08-08 01:55:16.619468"]]
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 15ms (ActiveRecord: 2.2ms | Allocations: 6637)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 21:55:16 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 1.0ms | Allocations: 321)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [2 times] (Duration: 27.6ms | Allocations: 8747)
+  Rendered posts/index.html.erb within layouts/application (Duration: 30.0ms | Allocations: 9625)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 41ms (Views: 34.0ms | ActiveRecord: 2.8ms | Allocations: 14841)
+
+
+Started POST "/posts/22/likes" for 127.0.0.1 at 2020-08-07 21:55:17 -0400
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"2Lw5SPrxuMQQzhCj7/SiI+t1LE4TU6ntcXnoQ60EQNEz1T7hannp1HHyJfc6doYrb5wakfurPhAAO1FJldn/zA==", "post_id"=>"22"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:12:in `set_post'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[36mLike Create (0.5ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["post_id", 22], ["user_id", 1], ["created_at", "2020-08-08 01:55:17.217015"], ["updated_at", "2020-08-08 01:55:17.217015"]]
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 15ms (ActiveRecord: 2.1ms | Allocations: 6622)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 21:55:17 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 321)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [2 times] (Duration: 24.9ms | Allocations: 8747)
+  Rendered posts/index.html.erb within layouts/application (Duration: 27.4ms | Allocations: 9625)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 37ms (Views: 30.6ms | ActiveRecord: 3.1ms | Allocations: 14847)
+
+
+Started POST "/posts/22/likes" for 127.0.0.1 at 2020-08-07 21:55:17 -0400
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"PhT7/xm84XMaKLMZINbgJqon1VB5KaOwWTWMNpsdNLbVffxWiTSwY3sUhk31VMQuLs7jj5HRNE0odzU8o8CLqw==", "post_id"=>"22"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:12:in `set_post'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[36mLike Create (0.4ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["post_id", 22], ["user_id", 1], ["created_at", "2020-08-08 01:55:17.583102"], ["updated_at", "2020-08-08 01:55:17.583102"]]
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 15ms (ActiveRecord: 2.1ms | Allocations: 6629)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 21:55:17 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 321)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [2 times] (Duration: 25.1ms | Allocations: 8747)
+  Rendered posts/index.html.erb within layouts/application (Duration: 27.4ms | Allocations: 9625)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 37ms (Views: 30.2ms | ActiveRecord: 3.3ms | Allocations: 14825)
+
+
+Started POST "/posts/22/likes" for 127.0.0.1 at 2020-08-07 21:55:18 -0400
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"iqSiSMxns1wLUKaNBWpc1FfdE4dvXF0TBxd0RLce08FhzaXhXO/iTGpsk9nQ6Hjc0zQlWIekyu52Vc1Oj8Ns3A==", "post_id"=>"22"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:12:in `set_post'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[36mLike Create (0.5ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["post_id", 22], ["user_id", 1], ["created_at", "2020-08-08 01:55:18.460707"], ["updated_at", "2020-08-08 01:55:18.460707"]]
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:5:in `create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 15ms (ActiveRecord: 2.2ms | Allocations: 6623)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 21:55:18 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 321)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 320)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [2 times] (Duration: 21.8ms | Allocations: 8747)
+  Rendered posts/index.html.erb within layouts/application (Duration: 24.0ms | Allocations: 9625)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 33ms (Views: 26.6ms | ActiveRecord: 3.3ms | Allocations: 14835)
+
+
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mLike Load (1.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 22:01:14 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 2.7ms | Allocations: 949)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 1.0ms | Allocations: 101)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 1.2ms | Allocations: 324)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [2 times] (Duration: 68.6ms | Allocations: 20076)
+  Rendered posts/index.html.erb within layouts/application (Duration: 84.4ms | Allocations: 24280)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 149ms (Views: 88.6ms | ActiveRecord: 22.3ms | Allocations: 42507)
+
+
+Started POST "/posts/21/likes" for 127.0.0.1 at 2020-08-07 22:01:16 -0400
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"lUcfvbLCgwSityof3BoC0DjQ7JxEBCDv1rFIjrG+tGZ+LhgUIkrSFMOLH0sJmCbYvDnaQ6z8txKn8/GEiWMLew==", "post_id"=>"21"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:33:in `set_post'
+  [1m[36mLike Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:25:in `already_liked?'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 11ms (ActiveRecord: 1.3ms | Allocations: 3425)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 22:01:16 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 1.8ms | Allocations: 324)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 1.4ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [2 times] (Duration: 47.6ms | Allocations: 8751)
+  Rendered posts/index.html.erb within layouts/application (Duration: 52.4ms | Allocations: 9632)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 76ms (Views: 57.1ms | ActiveRecord: 8.6ms | Allocations: 14858)
+
+
+Started POST "/posts/21/likes" for 127.0.0.1 at 2020-08-07 22:01:18 -0400
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"e+TGXfYMMCZBNz+h2KYLE1MysX9fmXs6ljnUKXHw5qGQjcH0ZoRhNiALCvUNJC8b19uHoLdh7Mfne20jSS1ZvA==", "post_id"=>"21"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:33:in `set_post'
+  [1m[36mLike Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:25:in `already_liked?'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 7ms (ActiveRecord: 1.2ms | Allocations: 3167)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 22:01:18 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 1.2ms | Allocations: 321)
+  [1m[36mComment Load (1.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.1ms | Allocations: 12)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:21
+  Rendered comments/_form.html.erb (Duration: 1.0ms | Allocations: 320)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [2 times] (Duration: 43.0ms | Allocations: 8747)
+  Rendered posts/index.html.erb within layouts/application (Duration: 47.8ms | Allocations: 9627)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 66ms (Views: 54.4ms | ActiveRecord: 6.8ms | Allocations: 14848)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 22:03:45 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 12.6ms | Allocations: 636)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.6ms | Allocations: 104)
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 2.0ms | Allocations: 324)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [2 times] (Duration: 69.2ms | Allocations: 14874)
+  Rendered posts/index.html.erb within layouts/application (Duration: 73.5ms | Allocations: 16017)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 89ms (Views: 76.1ms | ActiveRecord: 8.4ms | Allocations: 22341)
+
+
+Started DELETE "/posts/21/likes.1" for 127.0.0.1 at 2020-08-07 22:03:49 -0400
+  
+ActionController::RoutingError (No route matches [DELETE] "/posts/21/likes.1"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 22:04:03 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 4.9ms | Allocations: 639)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.6ms | Allocations: 101)
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (1.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 2.4ms | Allocations: 324)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.2ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [2 times] (Duration: 56.0ms | Allocations: 11587)
+  Rendered posts/index.html.erb within layouts/application (Duration: 62.0ms | Allocations: 12731)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 85ms (Views: 74.2ms | ActiveRecord: 6.0ms | Allocations: 19276)
+
+
+Started DELETE "/posts/21/likes" for 127.0.0.1 at 2020-08-07 22:04:05 -0400
+  
+ActionController::RoutingError (No route matches [DELETE] "/posts/21/likes"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 22:05:15 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 2.8ms | Allocations: 624)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.8ms | Allocations: 99)
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (1.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 1.4ms | Allocations: 324)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [2 times] (Duration: 56.4ms | Allocations: 11593)
+  Rendered posts/index.html.erb within layouts/application (Duration: 62.6ms | Allocations: 12737)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 81ms (Views: 70.8ms | ActiveRecord: 6.9ms | Allocations: 19145)
+
+
+Started GET "/users/1/posts/new" for 127.0.0.1 at 2020-08-07 22:05:19 -0400
+Processing by PostsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 14.6ms | Allocations: 3820)
+  Rendered posts/new.html.erb within layouts/application (Duration: 15.7ms | Allocations: 4164)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 28ms (Views: 24.6ms | ActiveRecord: 0.2ms | Allocations: 9363)
+
+
+Started POST "/posts" for 127.0.0.1 at 2020-08-07 22:05:22 -0400
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"vrmHeBizg2Z7rVoDA6KcLgDK+rD0urAnVPauXYGXnR2EAnb2gSqAOozdnk1ZvFs0eKRP5U9lhpzMjhOpnrBM6A==", "post"=>{"body"=>"test"}, "commit"=>"Create Post"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:31:in `block in create'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:31:in `block in create'
+  [1m[36mPost Create (0.9ms)[0m  [1m[32mINSERT INTO "posts" ("created_at", "updated_at", "body", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2020-08-08 02:05:22.158735"], ["updated_at", "2020-08-08 02:05:22.158735"], ["body", "test"], ["user_id", 1]]
+  ↳ app/controllers/posts_controller.rb:31:in `block in create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:31:in `block in create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 19ms (ActiveRecord: 2.8ms | Allocations: 6729)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 22:05:22 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 1.6ms | Allocations: 322)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.2ms | Allocations: 12)
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (4.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 1.4ms | Allocations: 320)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 1.3ms | Allocations: 320)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [3 times] (Duration: 80.0ms | Allocations: 15602)
+  Rendered posts/index.html.erb within layouts/application (Duration: 85.4ms | Allocations: 16494)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 115ms (Views: 92.6ms | ActiveRecord: 14.4ms | Allocations: 21728)
+
+
+Started POST "/posts/23/likes" for 127.0.0.1 at 2020-08-07 22:05:25 -0400
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"qkm66ca/GUaJxnGLSt/TFy0hxCwYoKnPISLJRLwqhNFBIL1AVjdIVuj6RN+fXfcfqcjy8/BYPjJQYHBOhPc7zA==", "post_id"=>"23"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:33:in `set_post'
+  [1m[36mLike Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:25:in `already_liked?'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Create (2.3ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["post_id", 23], ["user_id", 1], ["created_at", "2020-08-08 02:05:25.129688"], ["updated_at", "2020-08-08 02:05:25.129688"]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 54ms (ActiveRecord: 7.4ms | Allocations: 8183)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 22:05:25 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 1.8ms | Allocations: 321)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.3ms | Allocations: 12)
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (1.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 1.7ms | Allocations: 320)
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 2.6ms | Allocations: 320)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [3 times] (Duration: 117.5ms | Allocations: 15664)
+  Rendered posts/index.html.erb within layouts/application (Duration: 124.0ms | Allocations: 16552)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 150ms (Views: 128.3ms | ActiveRecord: 13.1ms | Allocations: 21771)
+
+
+Started DELETE "/posts/23/likes.21" for 127.0.0.1 at 2020-08-07 22:05:27 -0400
+  
+ActionController::RoutingError (No route matches [DELETE] "/posts/23/likes.21"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 22:06:04 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:15
+  Rendered collection of posts/_post.html.erb [3 times] (Duration: 200.1ms | Allocations: 74574)
+  Rendered posts/index.html.erb within layouts/application (Duration: 208.5ms | Allocations: 75697)
+Completed 500 Internal Server Error in 223ms (ActiveRecord: 3.4ms | Allocations: 78600)
+
+
+  
+ActionView::Template::Error (undefined method `delete_post_like_path' for #<#<Class:0x000055cf8724b830>:0x000055cf872309b8>):
+    14:     <div class="interaction-container">
+    15:       <% pre_like = post.likes.find { |like| like.user_id == current_user.id }%>
+    16:       <% if pre_like %>
+    17:         <%= button_to 'Unlike', delete_post_like_path(post), method: :delete, class: "like-button"%>
+    18:       <% else %>
+    19:         <%= button_to "Like", post_likes_path(post), method: "post", class: "like-button" %>
+    20:       <% end %>
+  
+app/views/posts/_post.html.erb:17
+app/views/posts/index.html.erb:4
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /home/jesse/.rbenv/versions/2.7.1/bin/rake:23)
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 22:07:17 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:15
+  Rendered collection of posts/_post.html.erb [3 times] (Duration: 152.7ms | Allocations: 74605)
+  Rendered posts/index.html.erb within layouts/application (Duration: 162.5ms | Allocations: 75728)
+Completed 500 Internal Server Error in 178ms (ActiveRecord: 2.7ms | Allocations: 78628)
+
+
+  
+ActionView::Template::Error (undefined method `destroy_post_like_path' for #<#<Class:0x000055cf86ccedf8>:0x000055cf86ca7348>
+Did you mean?  edit_post_like_path):
+    14:     <div class="interaction-container">
+    15:       <% pre_like = post.likes.find { |like| like.user_id == current_user.id }%>
+    16:       <% if pre_like %>
+    17:         <%= button_to 'Unlike', destroy_post_like_path(post), method: :delete, class: "like-button"%>
+    18:       <% else %>
+    19:         <%= button_to "Like", post_likes_path(post), method: "post", class: "like-button" %>
+    20:       <% end %>
+  
+app/views/posts/_post.html.erb:17
+app/views/posts/index.html.erb:4
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 22:07:35 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:15
+  Rendered collection of posts/_post.html.erb [3 times] (Duration: 177.7ms | Allocations: 74602)
+  Rendered posts/index.html.erb within layouts/application (Duration: 181.3ms | Allocations: 75725)
+Completed 500 Internal Server Error in 188ms (ActiveRecord: 1.9ms | Allocations: 78622)
+
+
+  
+ActionView::Template::Error (undefined method `destroy_post_like_path' for #<#<Class:0x000055cf86a302e0>:0x000055cf869d13d0>
+Did you mean?  edit_post_like_path):
+    14:     <div class="interaction-container">
+    15:       <% pre_like = post.likes.find { |like| like.user_id == current_user.id }%>
+    16:       <% if pre_like %>
+    17:         <%= button_to 'Unlike', destroy_post_like_path(pre_like), method: :delete, class: "like-button"%>
+    18:       <% else %>
+    19:         <%= button_to "Like", post_likes_path(post), method: "post", class: "like-button" %>
+    20:       <% end %>
+  
+app/views/posts/_post.html.erb:17
+app/views/posts/index.html.erb:4
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 22:08:10 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.9ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:15
+  Rendered collection of posts/_post.html.erb [3 times] (Duration: 197.5ms | Allocations: 74605)
+  Rendered posts/index.html.erb within layouts/application (Duration: 205.5ms | Allocations: 75728)
+Completed 500 Internal Server Error in 225ms (ActiveRecord: 4.5ms | Allocations: 78626)
+
+
+  
+ActionView::Template::Error (undefined method `destroy_post_like_path' for #<#<Class:0x000055cf87741240>:0x000055cf8771d430>
+Did you mean?  edit_post_like_path):
+    14:     <div class="interaction-container">
+    15:       <% pre_like = post.likes.find { |like| like.user_id == current_user.id }%>
+    16:       <% if pre_like %>
+    17:         <%= button_to 'Unlike', destroy_post_like_path(pre_like), method: "delete", class: "like-button"%>
+    18:       <% else %>
+    19:         <%= button_to "Like", post_likes_path(post), method: "post", class: "like-button" %>
+    20:       <% end %>
+  
+app/views/posts/_post.html.erb:17
+app/views/posts/index.html.erb:4
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 22:08:33 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:15
+  Rendered collection of posts/_post.html.erb [3 times] (Duration: 21.9ms | Allocations: 4577)
+  Rendered posts/index.html.erb within layouts/application (Duration: 29.0ms | Allocations: 5700)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 3.2ms | Allocations: 8597)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"likes", :post_id=>#<Like id: 1, post_id: 21, user_id: 1, created_at: "2020-08-08 01:49:14", updated_at: "2020-08-08 01:49:14">, :user_id=>"1"}, missing required keys: [:id]):
+    14:     <div class="interaction-container">
+    15:       <% pre_like = post.likes.find { |like| like.user_id == current_user.id }%>
+    16:       <% if pre_like %>
+    17:         <%= button_to 'Unlike', post_like_path(pre_like), method: "delete", class: "like-button"%>
+    18:       <% else %>
+    19:         <%= button_to "Like", post_likes_path(post), method: "post", class: "like-button" %>
+    20:       <% end %>
+  
+app/views/posts/_post.html.erb:17
+app/views/posts/index.html.erb:4
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 22:08:50 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 4.0ms | Allocations: 635)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 1.1ms | Allocations: 101)
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 1.7ms | Allocations: 324)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 1.7ms | Allocations: 320)
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [3 times] (Duration: 104.3ms | Allocations: 16627)
+  Rendered posts/index.html.erb within layouts/application (Duration: 113.0ms | Allocations: 17780)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 144ms (Views: 121.3ms | ActiveRecord: 12.3ms | Allocations: 24194)
+
+
+Started DELETE "/posts/21/likes" for 127.0.0.1 at 2020-08-07 22:08:55 -0400
+  
+ActionController::RoutingError (No route matches [DELETE] "/posts/21/likes"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started DELETE "/posts/21/likes" for 127.0.0.1 at 2020-08-07 22:09:14 -0400
+  
+ActionController::RoutingError (No route matches [DELETE] "/posts/21/likes"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 22:09:18 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 1.6ms | Allocations: 624)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 0.4ms | Allocations: 99)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 1.2ms | Allocations: 324)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 0.7ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [3 times] (Duration: 46.2ms | Allocations: 16680)
+  Rendered posts/index.html.erb within layouts/application (Duration: 48.9ms | Allocations: 17834)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 63ms (Views: 55.0ms | ActiveRecord: 4.4ms | Allocations: 24252)
+
+
+Started DELETE "/posts/23/likes.21" for 127.0.0.1 at 2020-08-07 22:09:22 -0400
+  
+ActionController::RoutingError (No route matches [DELETE] "/posts/23/likes.21"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 22:10:44 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 3.6ms | Allocations: 624)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 1.1ms | Allocations: 99)
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 2.5ms | Allocations: 324)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 1.9ms | Allocations: 320)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [3 times] (Duration: 115.3ms | Allocations: 16617)
+  Rendered posts/index.html.erb within layouts/application (Duration: 125.0ms | Allocations: 17770)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 159ms (Views: 134.0ms | ActiveRecord: 12.0ms | Allocations: 24170)
+
+
+Started DELETE "/posts/23/likes/1" for 127.0.0.1 at 2020-08-07 22:10:46 -0400
+Processing by LikesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"sg7dUnmEN6uBC5DzDQgTidAt1JbKGq5GphPKMQ8h7FdZZ9r76Qxmu+A3pafYijeBVMTiSSLiObvXUXM7N/xTSg==", "post_id"=>"23", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:33:in `set_post'
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."id" = $2 LIMIT $3[0m  [["post_id", 23], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:29:in `set_like'
+Completed 404 Not Found in 14ms (ActiveRecord: 1.1ms | Allocations: 3729)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Like with 'id'=1 [WHERE "likes"."post_id" = $1]):
+  
+app/controllers/likes_controller.rb:29:in `set_like'
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 22:11:28 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 3.7ms | Allocations: 624)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [1 times] (Duration: 1.0ms | Allocations: 99)
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 0.9ms | Allocations: 324)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 320)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 23]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [3 times] (Duration: 81.6ms | Allocations: 16625)
+  Rendered posts/index.html.erb within layouts/application (Duration: 89.5ms | Allocations: 17778)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 113ms (Views: 94.5ms | ActiveRecord: 9.5ms | Allocations: 24185)
+
+
+Started DELETE "/posts/23/likes/1" for 127.0.0.1 at 2020-08-07 22:11:31 -0400
+Processing by LikesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ii9hA+r/oU6Rz7R3Jk3MvSudfHQyGNC1emBaU/tYlA5hRmaqenfwXvDzgSPzz+i1r3RKq9rgR0gLIuNZw4UrEw==", "post_id"=>"23", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:33:in `set_post'
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."id" = $2 LIMIT $3[0m  [["post_id", 23], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:29:in `set_like'
+Completed 404 Not Found in 8ms (ActiveRecord: 0.8ms | Allocations: 3716)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Like with 'id'=1 [WHERE "likes"."post_id" = $1]):
+  
+app/controllers/likes_controller.rb:29:in `set_like'
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mLike Load (1.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1 LIMIT $2[0m  [["post_id", 23], ["LIMIT", 11]]
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 22]]
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  [1m[36mLike Destroy (0.9ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 8]]
+  [1m[36mLike Destroy (0.6ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 9]]
+  [1m[36mLike Destroy (0.8ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 10]]
+  [1m[36mLike Destroy (0.7ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 11]]
+  [1m[36mLike Destroy (0.7ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 12]]
+  [1m[36mLike Destroy (0.9ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 13]]
+  [1m[36mLike Destroy (0.8ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 14]]
+  [1m[36mLike Destroy (0.7ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 15]]
+  [1m[36mLike Destroy (0.7ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 16]]
+  [1m[36mLike Destroy (0.7ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 17]]
+  [1m[36mLike Destroy (0.7ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 18]]
+  [1m[36mLike Destroy (0.7ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 19]]
+  [1m[36mLike Destroy (0.7ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 20]]
+  [1m[36mPost Destroy (1.9ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 22]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 21]]
+  [1m[36mComment Destroy (0.8ms)[0m  [1m[31mDELETE FROM "comments" WHERE "comments"."id" = $1[0m  [["id", 10]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  [1m[36mLike Destroy (0.6ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 1]]
+  [1m[36mLike Destroy (0.6ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 2]]
+  [1m[36mLike Destroy (0.5ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 3]]
+  [1m[36mLike Destroy (0.5ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 4]]
+  [1m[36mLike Destroy (0.6ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 5]]
+  [1m[36mLike Destroy (0.5ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 6]]
+  [1m[36mLike Destroy (0.5ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 7]]
+  [1m[36mPost Destroy (1.2ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 21]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 23]]
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 23]]
+  [1m[36mLike Destroy (0.9ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 21]]
+  [1m[36mPost Destroy (1.6ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 23]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[36mLike Load (0.9ms)[0m  [1m[34mSELECT "likes".* FROM "likes"[0m
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 22:13:27 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  Rendered collection of posts/_post.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 878)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 10.2ms | ActiveRecord: 0.7ms | Allocations: 6100)
+
+
+Started GET "/users/1/posts/new" for 127.0.0.1 at 2020-08-07 22:13:30 -0400
+Processing by PostsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (Duration: 1.6ms | Allocations: 778)
+  Rendered posts/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1121)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 8.2ms | ActiveRecord: 0.2ms | Allocations: 6414)
+
+
+Started POST "/posts" for 127.0.0.1 at 2020-08-07 22:13:33 -0400
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"s1+JMIQPpuNVG6YaodgczRWEgHO9S8Ur80gU8isN2yOJ5Hi+HZalv6JrYlT7xtvXbeo1JgaU85BrMKkGNCoK1g==", "post"=>{"body"=>"test post"}, "commit"=>"Create Post"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:31:in `block in create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:31:in `block in create'
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("created_at", "updated_at", "body", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2020-08-08 02:13:33.312340"], ["updated_at", "2020-08-08 02:13:33.312340"], ["body", "test post"], ["user_id", 1]]
+  ↳ app/controllers/posts_controller.rb:31:in `block in create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:31:in `block in create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 12ms (ActiveRecord: 1.7ms | Allocations: 5679)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 22:13:33 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 322)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 12.0ms | Allocations: 5127)
+  Rendered posts/index.html.erb within layouts/application (Duration: 14.1ms | Allocations: 5998)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 25ms (Views: 18.8ms | ActiveRecord: 1.9ms | Allocations: 11223)
+
+
+Started POST "/posts/24/likes" for 127.0.0.1 at 2020-08-07 22:13:36 -0400
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"GneLsw5VmxtUiK6JkEkAvCh4lbTtp3FMCbM+AxcsVjTxHowant3KCzW0m91FyyS0rJGjawVf5rF48YcJL/HpKQ==", "post_id"=>"24"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:33:in `set_post'
+  [1m[36mLike Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:25:in `already_liked?'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Create (0.6ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["post_id", 24], ["user_id", 1], ["created_at", "2020-08-08 02:13:36.051451"], ["updated_at", "2020-08-08 02:13:36.051451"]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 21ms (ActiveRecord: 2.9ms | Allocations: 7303)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-07 22:13:36 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 1.0ms | Allocations: 321)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 12.4ms | Allocations: 5172)
+  Rendered posts/index.html.erb within layouts/application (Duration: 14.6ms | Allocations: 6040)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 24ms (Views: 18.4ms | ActiveRecord: 2.2ms | Allocations: 11266)
+
+
+Started DELETE "/posts/24/likes/1" for 127.0.0.1 at 2020-08-07 22:13:40 -0400
+Processing by LikesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"G9ycfewVs96gwTVF/TUHyhlZcjPCiVEaCAF3zl5YZ/TwtZvUfJ3izsH9ABEotyPCnbBE7Cpxxud5Q87EZoXY6Q==", "post_id"=>"24", "id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:33:in `set_post'
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."id" = $2 LIMIT $3[0m  [["post_id", 24], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:29:in `set_like'
+Completed 404 Not Found in 19ms (ActiveRecord: 2.0ms | Allocations: 3716)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Like with 'id'=1 [WHERE "likes"."post_id" = $1]):
+  
+app/controllers/likes_controller.rb:29:in `set_like'
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1 LIMIT $2[0m  [["post_id", 24], ["LIMIT", 11]]
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1 LIMIT $2[0m  [["post_id", 24], ["LIMIT", 11]]
+Started DELETE "/posts/24/likes/1" for 127.0.0.1 at 2020-08-07 22:15:42 -0400
+Processing by LikesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"G9ycfewVs96gwTVF/TUHyhlZcjPCiVEaCAF3zl5YZ/TwtZvUfJ3izsH9ABEotyPCnbBE7Cpxxud5Q87EZoXY6Q==", "post_id"=>"24", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:33:in `set_post'
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."id" = $2 LIMIT $3[0m  [["post_id", 24], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:29:in `set_like'
+Completed 404 Not Found in 7ms (ActiveRecord: 0.9ms | Allocations: 3715)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Like with 'id'=1 [WHERE "likes"."post_id" = $1]):
+  
+app/controllers/likes_controller.rb:29:in `set_like'
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-09 10:41:38 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 2.5ms | Allocations: 948)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 55.4ms | Allocations: 18946)
+  Rendered posts/index.html.erb within layouts/application (Duration: 72.9ms | Allocations: 23142)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 136ms (Views: 80.0ms | ActiveRecord: 18.2ms | Allocations: 41368)
+
+
+Started DELETE "/posts/24/likes/1" for 127.0.0.1 at 2020-08-09 10:41:48 -0400
+Processing by LikesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+5hEWmJhEOzBJH0T1Nr9Hif1fcNTJ2D2ImIRDDbVDegQ8UPz8ulB/KAYSEcBWNkWoxxLHLvf9wtTIKgGDgiy9Q==", "post_id"=>"24", "id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:33:in `set_post'
+  [1m[36mLike Load (0.9ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."id" = $2 LIMIT $3[0m  [["post_id", 24], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:29:in `set_like'
+Completed 404 Not Found in 28ms (ActiveRecord: 3.2ms | Allocations: 3963)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Like with 'id'=1 [WHERE "likes"."post_id" = $1]):
+  
+app/controllers/likes_controller.rb:29:in `set_like'
+Started PUT "/__web_console/repl_sessions/14dfb8b0a97ca22aeb8c709917bef3cc" for 127.0.0.1 at 2020-08-09 10:41:54 -0400
+Started PUT "/__web_console/repl_sessions/14dfb8b0a97ca22aeb8c709917bef3cc" for 127.0.0.1 at 2020-08-09 10:41:57 -0400
+  [1m[36mLike Load (1.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Destroy (1.1ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 22]]
+  [1m[35m (4.7ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-09 10:43:29 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (1.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 4.1ms | Allocations: 327)
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 61.6ms | Allocations: 5161)
+  Rendered posts/index.html.erb within layouts/application (Duration: 71.0ms | Allocations: 6031)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 123ms (Views: 97.4ms | ActiveRecord: 7.5ms | Allocations: 11354)
+
+
+Started POST "/posts/24/likes" for 127.0.0.1 at 2020-08-09 10:43:31 -0400
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"jvixVTvaLmVw/AkQ46ozVHBWsWJm1fIYU0R/eHfn+K5lkbb8q1J/dRHAPEQ2KBdc9L+HvY4tZeUiBsZyTzpHsw==", "post_id"=>"24"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:33:in `set_post'
+  [1m[36mLike Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:25:in `already_liked?'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Create (0.9ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["post_id", 24], ["user_id", 1], ["created_at", "2020-08-09 14:43:32.015936"], ["updated_at", "2020-08-09 14:43:32.015936"]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 24ms (ActiveRecord: 3.3ms | Allocations: 8381)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-09 10:43:32 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 1.4ms | Allocations: 321)
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 21.1ms | Allocations: 5172)
+  Rendered posts/index.html.erb within layouts/application (Duration: 25.3ms | Allocations: 6041)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 42ms (Views: 32.7ms | ActiveRecord: 3.2ms | Allocations: 11250)
+
+
+Started DELETE "/posts/24/likes/1" for 127.0.0.1 at 2020-08-09 10:43:38 -0400
+Processing by LikesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"/AOtf+2kXBIldYEuFJ8iMOpyozG47eqh8qbQ4XVaSooXaqrWfSwNAkRJtHrBHQY4bpuV7lAVfVyD5GnrTYf1lw==", "post_id"=>"24", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:33:in `set_post'
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."id" = $2 LIMIT $3[0m  [["post_id", 24], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:29:in `set_like'
+Completed 404 Not Found in 11ms (ActiveRecord: 0.9ms | Allocations: 3717)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Like with 'id'=1 [WHERE "likes"."post_id" = $1]):
+  
+app/controllers/likes_controller.rb:29:in `set_like'
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" ORDER BY "likes"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-09 10:45:14 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:15
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 289.6ms | Allocations: 141375)
+  Rendered posts/index.html.erb within layouts/application (Duration: 297.4ms | Allocations: 142492)
+Completed 500 Internal Server Error in 311ms (ActiveRecord: 4.3ms | Allocations: 145414)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `like' for #<#<Class:0x00005624ec12cb38>:0x00005624ec0ebe08>):
+    14:     <div class="interaction-container">
+    15:       <% pre_like = post.likes.find { |like| like.user_id == current_user.id }%>
+    16:       <% if pre_like %>
+    17:         <%= button_to 'Unlike', post_like_path(post, like), method: "delete", class: "like-button"%>
+    18:       <% else %>
+    19:         <%= button_to "Like", post_likes_path(post), method: "post", class: "like-button" %>
+    20:       <% end %>
+  
+app/views/posts/_post.html.erb:17
+app/views/posts/index.html.erb:4
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-09 10:45:49 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.9ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 4.7ms | Allocations: 636)
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 49.4ms | Allocations: 6103)
+  Rendered posts/index.html.erb within layouts/application (Duration: 59.3ms | Allocations: 7238)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 100ms (Views: 80.2ms | ActiveRecord: 7.4ms | Allocations: 13662)
+
+
+Started DELETE "/posts/24/likes/23" for 127.0.0.1 at 2020-08-09 10:45:51 -0400
+Processing by LikesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"I6cTVEw05nvMGmC0vgcL1l3AiVejT5v0ZOb75VDZSCjIzhT93Ly3a60mVeBrhS/e2Sm/iEu3DAkVpELvaAT3NQ==", "post_id"=>"24", "id"=>"23"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:33:in `set_post'
+  [1m[36mLike Load (0.9ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."id" = $2 LIMIT $3[0m  [["post_id", 24], ["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:29:in `set_like'
+  [1m[36mLike Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:25:in `already_liked?'
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  [1m[36mLike Destroy (0.8ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 23]]
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 39ms (ActiveRecord: 6.0ms | Allocations: 5914)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-09 10:45:51 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 2.0ms | Allocations: 324)
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 34.9ms | Allocations: 5129)
+  Rendered posts/index.html.erb within layouts/application (Duration: 40.7ms | Allocations: 5998)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 71ms (Views: 57.1ms | ActiveRecord: 5.7ms | Allocations: 11206)
+
+
+Started POST "/posts/24/likes" for 127.0.0.1 at 2020-08-09 10:45:53 -0400
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"DiOnw/f1xOoJb4Qw71lckQbDmCVWerc/TW9VlWrnf4/lSqBqZ32V+mhTsWQ623iZgiqu+r6CIMI8LeyfUjrAkg==", "post_id"=>"24"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:33:in `set_post'
+  [1m[36mLike Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:25:in `already_liked?'
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Create (1.4ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["post_id", 24], ["user_id", 1], ["created_at", "2020-08-09 14:45:53.821244"], ["updated_at", "2020-08-09 14:45:53.821244"]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (5.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 48ms (ActiveRecord: 10.2ms | Allocations: 7308)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-09 10:45:53 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 2.2ms | Allocations: 321)
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 31.6ms | Allocations: 5172)
+  Rendered posts/index.html.erb within layouts/application (Duration: 36.9ms | Allocations: 6040)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 61ms (Views: 46.9ms | ActiveRecord: 4.7ms | Allocations: 11239)
+
+
+Started DELETE "/posts/24/likes/24" for 127.0.0.1 at 2020-08-09 10:45:54 -0400
+Processing by LikesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"1GpOcKN84MhY2jabTiXSukPS99vNfAqSbURadhr2PQo/A0nZM/Sx2DnmA8+bp/ayxzvBBCWEnW8cBuN8IiuCFw==", "post_id"=>"24", "id"=>"24"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:33:in `set_post'
+  [1m[36mLike Load (1.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."id" = $2 LIMIT $3[0m  [["post_id", 24], ["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:29:in `set_like'
+  [1m[36mLike Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:25:in `already_liked?'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  [1m[36mLike Destroy (1.1ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 24]]
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 41ms (ActiveRecord: 6.1ms | Allocations: 5923)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-09 10:45:54 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 1.7ms | Allocations: 321)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 32.3ms | Allocations: 5125)
+  Rendered posts/index.html.erb within layouts/application (Duration: 38.3ms | Allocations: 5994)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 62ms (Views: 49.5ms | ActiveRecord: 4.4ms | Allocations: 11199)
+
+
+Started POST "/posts/24/likes" for 127.0.0.1 at 2020-08-09 10:45:55 -0400
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"9uB/KUdn+OcAGlMQJ7y/690dECwS7qOU3QHwWoUStLMdiXiA1++p92EmZkTyPpvjWfQm8/oWNGmsQ0lQvc8Lrg==", "post_id"=>"24"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:33:in `set_post'
+  [1m[36mLike Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:25:in `already_liked?'
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Create (1.5ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["post_id", 24], ["user_id", 1], ["created_at", "2020-08-09 14:45:55.622901"], ["updated_at", "2020-08-09 14:45:55.622901"]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 45ms (ActiveRecord: 9.8ms | Allocations: 7297)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-09 10:45:55 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 1.7ms | Allocations: 321)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 29.2ms | Allocations: 5169)
+  Rendered posts/index.html.erb within layouts/application (Duration: 35.0ms | Allocations: 6037)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 60ms (Views: 45.4ms | ActiveRecord: 5.2ms | Allocations: 11249)
+
+
+Started DELETE "/posts/24/likes/25" for 127.0.0.1 at 2020-08-09 10:45:56 -0400
+Processing by LikesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"mOlHHotRGDHfhO8ytHbX6dPkDPN/i/cWa/wRR7TY1ZVzgEC3G9lJIb642mZh9PPhVw06LJdzYOsavqhNjAVqiA==", "post_id"=>"24", "id"=>"25"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:33:in `set_post'
+  [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."id" = $2 LIMIT $3[0m  [["post_id", 24], ["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:29:in `set_like'
+  [1m[36mLike Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:25:in `already_liked?'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  [1m[36mLike Destroy (0.8ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 25]]
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 34ms (ActiveRecord: 5.7ms | Allocations: 5908)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-09 10:45:56 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 1.9ms | Allocations: 321)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 29.7ms | Allocations: 5125)
+  Rendered posts/index.html.erb within layouts/application (Duration: 34.7ms | Allocations: 5993)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 59ms (Views: 44.1ms | ActiveRecord: 5.1ms | Allocations: 11189)
+
+
+Started POST "/posts/24/likes" for 127.0.0.1 at 2020-08-09 10:45:57 -0400
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"95xPzDI61hzlsFzwzXdo4Jxaeq3lBh4PUFHRV9vFGlMc9UhlorKHDISMaaQY9UzoGLNMcg3+ifIhE2hd4xilTg==", "post_id"=>"24"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:33:in `set_post'
+  [1m[36mLike Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:25:in `already_liked?'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Create (0.7ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["post_id", 24], ["user_id", 1], ["created_at", "2020-08-09 14:45:57.319347"], ["updated_at", "2020-08-09 14:45:57.319347"]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 21ms (ActiveRecord: 3.2ms | Allocations: 7311)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-09 10:45:57 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 321)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 13.6ms | Allocations: 5169)
+  Rendered posts/index.html.erb within layouts/application (Duration: 17.0ms | Allocations: 6037)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 28ms (Views: 21.7ms | ActiveRecord: 2.2ms | Allocations: 11249)
+
+
+Started DELETE "/posts/24/likes/26" for 127.0.0.1 at 2020-08-09 10:45:58 -0400
+Processing by LikesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"NM3cWungz7MsbAdePyDvMzBV1Mmn4zyj0zqoD+acF2nfpNvzeWieo01QMgrqoss7tLziFk8bq16ieBEF3kGodA==", "post_id"=>"24", "id"=>"26"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:33:in `set_post'
+  [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."id" = $2 LIMIT $3[0m  [["post_id", 24], ["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:29:in `set_like'
+  [1m[36mLike Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:25:in `already_liked?'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  [1m[36mLike Destroy (0.8ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 26]]
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 41ms (ActiveRecord: 5.2ms | Allocations: 5886)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-09 10:45:58 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 2.0ms | Allocations: 321)
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 33.2ms | Allocations: 5127)
+  Rendered posts/index.html.erb within layouts/application (Duration: 38.5ms | Allocations: 5995)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 63ms (Views: 49.5ms | ActiveRecord: 5.2ms | Allocations: 11215)
+
+
+Started POST "/posts/24/likes" for 127.0.0.1 at 2020-08-09 10:45:59 -0400
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"d4BD6sd56VdWyqeMwQFfUInjAIAV6Dp0xpzG0u4F7zec6URDV/G4Rzf2ktgUg3tYDQo2X/0QrYm33n/Y1thQKg==", "post_id"=>"24"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:33:in `set_post'
+  [1m[36mLike Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:25:in `already_liked?'
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Create (1.4ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["post_id", 24], ["user_id", 1], ["created_at", "2020-08-09 14:45:59.291667"], ["updated_at", "2020-08-09 14:45:59.291667"]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 43ms (ActiveRecord: 5.9ms | Allocations: 7288)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-09 10:45:59 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 1.8ms | Allocations: 321)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 33.6ms | Allocations: 5170)
+  Rendered posts/index.html.erb within layouts/application (Duration: 38.9ms | Allocations: 6038)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 61ms (Views: 48.1ms | ActiveRecord: 5.3ms | Allocations: 11242)
+
+
+Started DELETE "/posts/24/likes/27" for 127.0.0.1 at 2020-08-09 10:46:00 -0400
+Processing by LikesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"/jZ23TZ0xrzD4yVyfILh6F2D8kNznSYZQjdo+H5iUYwVX3F0pvyXrKLfECapAMXg2WrEnJtlseQzddHyRr/ukQ==", "post_id"=>"24", "id"=>"27"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:33:in `set_post'
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."id" = $2 LIMIT $3[0m  [["post_id", 24], ["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:29:in `set_like'
+  [1m[36mLike Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:25:in `already_liked?'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  [1m[36mLike Destroy (0.9ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 27]]
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+Redirected to http://localhost:3000/users/1/posts
+Completed 302 Found in 34ms (ActiveRecord: 5.0ms | Allocations: 5904)
+
+
+Started GET "/users/1/posts" for 127.0.0.1 at 2020-08-09 10:46:00 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" ASC[0m  [["user_id", 1]]
+  ↳ app/views/posts/index.html.erb:4
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:8
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:15
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:26
+  Rendered comments/_form.html.erb (Duration: 1.9ms | Allocations: 321)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 24]]
+  ↳ app/views/posts/_post.html.erb:31
+  Rendered collection of comments/_comment.html.erb [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 34.7ms | Allocations: 5125)
+  Rendered posts/index.html.erb within layouts/application (Duration: 40.1ms | Allocations: 5993)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 66ms (Views: 52.1ms | ActiveRecord: 5.1ms | Allocations: 11205)
+
+
