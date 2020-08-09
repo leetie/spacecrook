@@ -5,7 +5,8 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.where(user_id: params[:user_id]).order(:created_at)
+    @posts = Post.all.order(:created_at)
+    #@posts = Post.where(user_id: params[:user_id]).order(:created_at)
   end
 
   # GET /posts/1
