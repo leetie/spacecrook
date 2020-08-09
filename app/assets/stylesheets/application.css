@@ -15,10 +15,14 @@
  */
 
 body {
+  background-color: rgb(219, 241, 219);
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin-top: 85px;
   text-align: center;
-  background-color: rgb(222, 243, 200);
+  /* background-color: rgb(222, 243, 200); */
+}
+button {
+  border-radius: 10px;
 }
 .navbar {
   height: 70px;
@@ -29,11 +33,21 @@ body {
   left: 0;
   margin-bottom: 20px;
   position: fixed;
+  z-index: 1;
 }
 .user-info {
   color: black;
   float: right;
   margin-right: 10px;
+}
+.logo-container {
+  height: 70px;
+}
+
+
+.logo {
+  object-fit: cover;
+  height: 70px;
 }
 .post-container {
   position: relative;
@@ -44,6 +58,7 @@ body {
   border-width: thick;
   border-style: outset;
   background-color: rgb(120, 243, 141);
+  margin-bottom: 30px;
 }
 .content {
   font-size: larger;
@@ -78,4 +93,33 @@ body {
   background-color: rgb(37, 126, 10);
   font-size: xx-small;
   color: white;
+}
+
+.post-picture > img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.post-picture > img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+#post_body {
+  color: rgb(18, 194, 18);
+  border-radius: 10px;
+}
+
+textarea {
+  border-radius: 8px;
+}
+
+input {
+  border-radius: 10px;
+  display: inline-flex;
+}
+
+.user-info > p {
+  background-color: rgb(98, 248, 38);
+  border-radius: 8px;
 }
