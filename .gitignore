@@ -25,3 +25,5 @@ config/master.key
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+/config/secrets.yml
+config/secrets.yml
