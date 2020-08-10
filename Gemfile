@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.1'
 # Use attribute-defaults for activerecord defaults
 gem 'attribute-defaults'
+gem 'bootstrap',  '~>4.3.1'
 #Amazon S3
 gem 'aws-sdk-s3', require: false
 gem 'devise'

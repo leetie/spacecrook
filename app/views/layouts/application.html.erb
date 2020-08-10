@@ -2,48 +2,23 @@
 <html>
   <head>
     <title>Spacecrook</title>
+    <meta name="viewport", content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application'%>
- <div class="topnav" id="myTopnav">
-  <%= link_to 'Home', root_path, class: "active" %>
-  <a href="#news">Find Friends</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
-  
-    <% if current_user %>
-      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-      <p id="signed-in-as">Signed in as <%= current_user.name %></p>
-    <% else %>
-      <%= link_to 'Sign In', new_user_session_path %>
-    <% end %>
- 
-  <div class="dropdown">
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'%>
 
-    <%# <button class="dropbtn">Dropdown
-      <i class="fa fa-caret-down"></i>
-    </button> %>
-    <div class="dropdown-content">
-      <%# <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a> %>
-    </div>
-  </div>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
-</div> 
+
+    <nav class="navbar navbar-expand-sm bg-light">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link", href="#">Link</a>
+        </li>
+      </ul>
+    </nav>
   </head>
   <body>
-    <script>function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-} 
-</script>
     <%= yield %>
   </body>
 </html>
