@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(version: 2020_08_10_022523) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "body"
     t.bigint "user_id"
-    t.integer "likes"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
