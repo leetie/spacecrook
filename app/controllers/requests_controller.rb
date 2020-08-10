@@ -3,6 +3,14 @@ class RequestsController < ApplicationController
     @request = Request.new
   end
 
+  def accept
+    puts "in the accept method"
+    redirect_to requests_path
+  end
+  def deny
+    puts "in the deny method"
+    redirect_to requests_path
+  end
   def index
     @requests = Request.where(sent_to: current_user.id)
   end
