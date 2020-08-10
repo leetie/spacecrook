@@ -8,6 +8,16 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
       <div class="navbar">
+              <div class="new-post">
+          <% if current_user %>
+              <%= link_to 'Post to your Page!', new_user_post_path(current_user.id) %>
+          <% else %>
+            <p>Sign in to make a post</p>
+          <% end %>
+        </div>
+                <div class="logo-container">
+            <%= image_tag 'logo.png', class: 'logo' %>
+        </div>
         <div class="user-info">
           <% if current_user %>
             <p>Logged in as <%= current_user.email %></p>
@@ -16,23 +26,9 @@
             <%= link_to 'Login', new_user_session_path %>
           <% end %>
         </div>
-        <div class="logo-container">
-            <%= image_tag 'logo.png', class: 'logo' %>
-        </div>
-        
-        <div class="new-post">
-        <% if current_user %>
-            <%= link_to 'Post to your Page!', new_user_post_path(current_user.id) %>
-        <% else %>
-          <p>Sign in to make a post</p>
-        <% end %>
-        </div>
       </div>
-
   </head>
-
   <body>
-
     <%= yield %>
   </body>
 </html>
