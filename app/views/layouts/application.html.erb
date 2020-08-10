@@ -20,13 +20,13 @@
           <%= image_tag 'logo.png', class: "nav-item", width: "30px" %>
         </a>
         <% if current_user %>
-          <% if User.find(current_user.id).incoming_requests.any? %>
+          <% if User.find(current_user.id).incoming_requests.where(status: false).any? %>
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link" href="<%=requests_path%>">
                   <i class="fa fa-bell">
                     <div id="request-counter">
-                      <%= User.find(current_user.id).incoming_requests.count %>
+                      <%= User.find(current_user.id).incoming_requests.where(status: false).count %>
                     </div>
                   </i>
                 </a>

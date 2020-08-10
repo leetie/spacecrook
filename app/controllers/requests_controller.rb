@@ -5,14 +5,20 @@ class RequestsController < ApplicationController
 
   def accept
     puts "in the accept method"
-    redirect_to requests_path
+    @request = Request.where(sent_to: params[:sent_to], sent_by: params[:sent_by]).first
+    @request.status = true
+    if @request.save
+      redirect_to requests_path
+    end
   end
   def deny
     puts "in the deny method"
+    @request = Request.where(sent_to: params[:sent_to], sent_by: params[:sent_by]).first
+    @request.destroy
     redirect_to requests_path
   end
   def index
-    @requests = Request.where(sent_to: current_user.id)
+    @requests = Request.where(sent_to: current_user.id, status: false)
   end
 
   def create

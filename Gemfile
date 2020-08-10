@@ -5,6 +5,7 @@ ruby '2.7.1'
 # Use attribute-defaults for activerecord defaults
 gem 'attribute-defaults'
 gem 'bootstrap',  '~>4.3.1'
+gem 'simple_form'
 #Amazon S3
 gem 'aws-sdk-s3', require: false
 gem 'devise'
