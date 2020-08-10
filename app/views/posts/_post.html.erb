@@ -1,37 +1,39 @@
-<div class="post-container">
-  <div class="content">
-    <div class="post-info">
-      <div class="like-counter">
-        <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+<div class="row">
+  <div class="col">
+  </div>
+
+  <div class="col">
+    <div class="post-container">
+      <div class="post-picture">
+        <% if post.picture.attached? %>
+          <%= image_tag post.picture, class: "img-fluid rounded" %>
+        <% end %>
       </div>
-      <div class="user-info">
-        <p>Posted by <%= User.find(post.user_id.to_s).name %> <%= distance_of_time_in_words(post.created_at, Time.now) %> ago</p>
+      <span class="badge badge-primary">Posted By</span> <%= User.find(post.user_id).name %><br>
+      <%= distance_of_time_in_words(post.created_at, Time.now) %><%= " ago"%> <i class="fas fa-clock"></i>
+    </div>
+    <div class="interactions">
+      <div class="likes">
+        <% pre_like = post.likes.find { |like| like.user_id == current_user.id }%>
+        <% if pre_like %>
+          <%= link_to raw("<i class=\"far fa-thumbs-down\"></i>"), post_like_path(post, pre_like), method: :delete%>
+        <% else %>
+          <%= link_to raw("<i class=\"far fa-thumbs-up\"></i>"), post_likes_path(post), method: :post %>
+        <% end %> <p class="text-black-50 font-italic small"><%= post.likes.count %></p>
       </div>
-    </div><br>
-    <%= post.body %>
-  </div>
-  <div class="post-picture">
-    <% if post.picture.attached? %>
-      <%= image_tag post.picture %>
-    <% end %>
-  </div>
-  <div class="interactions">
-    <div class="interaction-container">
-      <% pre_like = post.likes.find { |like| like.user_id == current_user.id }%>
-      <% if pre_like %>
-        <%= button_to 'Unlike', post_like_path(post, pre_like), method: "delete", class: "like-button"%>
-      <% else %>
-        <%= button_to "Like", post_likes_path(post), method: "post", class: "like-button" %>
-      <% end %>
     </div>
-    <div class="interaction-container">
-      <button class="show-comment-form">Expand form</button>
-    </div>
-    <div class="interaction-container">
-      <button class="show-comments">Show <%= post.comments.count %> Comments</button>
+    <div class="post-body container p-3 my-2 border">
+      <p class="text-black-50"><%= post.body%></p>
     </div>
   </div>
-  <%= render 'comments/form', current_user: current_user.id, comment: Comment.new, post_id: post.id %>
-  
-  <%= render partial: "comments/comment", collection: post.comments %>
+
+
+  <div class="col">
+  </div>
 </div>
+
+
+
+
+
+

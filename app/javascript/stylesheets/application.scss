@@ -1,6 +1,46 @@
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap";
+body {
+  padding-top: 65px;
+}
+.fa-bell {
+  color: rgb(0, 89, 255);
+  position: relative;
+}
+#request-counter {
+  position: absolute;
+  color: rgb(255, 0, 0);
+  font-weight: bold;
+  margin-left: 7px;
+}
+
+.post-picture {
+  object-fit: contain;
+}
+.interactions {
+  margin-top: 3px;
+  background-color: white;
+  border-radius: 20px;
+  margin-bottom: 0;
+}
+.likes {
+  margin-left: 5px;
+}
+.post-body {
+  border-radius: 6px;
+  background-color: white;
+  box-shadow: 5px 10px 8px #888888;
+}
+.posted-by {
+
+}
+.post-container {
+  border: 2px grey solid;
+  border-radius: 5px;
+  padding-bottom: 2px;
+  background-color: white;
+}
 
 body {
-
+  background-color: rgb(240, 236, 231);
 }

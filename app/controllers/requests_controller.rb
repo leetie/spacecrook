@@ -4,7 +4,7 @@ class RequestsController < ApplicationController
   end
 
   def index
-    @requests = Request.find(sent_to: current_user.id)
+    @requests = Request.where(sent_to: current_user.id)
   end
 
   def create

@@ -1,2 +1,13 @@
-<h1>Requests#index</h1>
-<p>Find me in app/views/requests/index.html.erb</p>
+<div class="row">
+  <div class="col">
+    <% @requests.each do |request| %>
+      <p class="text-muted">Friend request from <%=User.find(request.sent_by).name %></p>
+      <div class="btn-group">
+        <%#= link_to raw("<i class=\"far fa-thumbs-up\"></i>"), , method: :post %>
+        <a href="<%=new_request_path(request)%>" class="btn btn-primary" role="button">Accepto</a>
+        <button type="button" class="btn btn-primary">Accept</button>
+        <button type="button" class="btn btn-danger">Deny</button>
+      </div>
+    <% end %>
+  </div>
+</div>
