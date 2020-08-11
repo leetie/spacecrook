@@ -1,0 +1,5 @@
+<h1>Your Friends</h1>
+<%# each friend represents one instance of request model sent_by, sent_to %>
+<% @friends.each do |friend| %>
+  <%= friend.name%>  <%= link_to "Story", user_posts_path(friend) %>
+<% end %>

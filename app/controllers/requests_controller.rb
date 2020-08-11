@@ -20,6 +20,19 @@ class RequestsController < ApplicationController
   def index
     @requests = Request.where(sent_to: current_user.id, status: false)
   end
+  
+  def friends
+    ##add scope in model for this stuff
+    @user = User.find(params[:user_id])
+    @ary = Request.where(status: true, sent_by: @user.id).or(Request.where(status: true, sent_to:@user.id))
+
+    other_friend_ids = @ary.map{|i| [i.sent_by, i.sent_to] }
+    puts "other friends are #{other_friend_ids} before flattening"
+    other_friend_ids.flatten!
+    other_ids = other_friend_ids.select{|i| i.to_s != current_user.id.to_s }
+    puts "now other friend ids are #{other_ids}"
+    @friends = User.where(id: other_ids)
+  end
 
   def create
     @request = Request.new(request_params)

@@ -1,10 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Your Feed</h1>
+<h1><%= @user.name %>'s Feed</h1>
 <%= render partial: "post", collection: @posts, cached: false %>
 
 
 
 <br>
-<%=  link_to 'New post', new_user_post_path(current_user.id) %>
+<% if current_user %>
+  <% if current_user.id == @user.id %>
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="col d-flex justify-content-center">
+        <%=  link_to 'New post', new_user_post_path(current_user.id), class: "btn btn-primary" %>
+    </div>
+    <div class="col">
+    </div>
+  </div>
+  <% end %>
+<% end %>
 
