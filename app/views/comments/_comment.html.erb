@@ -1,5 +1,15 @@
 <% @user = User.find(comment.user_id) %>
-<p class="strong lead">
-<%= image_tag @user.profile_picture, class: "post-profile-img" %>
- <%=@user.name%> </p>
-<blockquote class="blockquote"><%= comment.body%></blockquote>
+<div class="border border-primary w-50">
+  <p class="strong lead">
+    <% if @user.profile_picture.attached? %>
+      <%= image_tag @user.profile_picture, class: "post-profile-img" %>
+      <%=@user.name%> 
+    <% else %>
+      <img class="img-circle post-profile-img" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-zsbDeAUd8aY%2FUS7F0ta5d9I%2FAAAAAAAAEKY%2FUL2AAhHj6J8%2Fs1600%2Ffacebook-default-no-profile-pic.jpg&f=1&nofb=1">
+      <%=@user.name%>
+    <% end %>
+    -  <%= distance_of_time_in_words(comment.created_at, Time.now)%>
+
+  </p>
+  <blockquote class="blockquote"><%= comment.body%></blockquote>
+</div>

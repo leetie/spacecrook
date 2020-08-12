@@ -23,6 +23,8 @@
           <p><i class="fas fa-clock"></i> Posted by 
           <% if @user.profile_picture.attached? %>
             <%= image_tag @user.profile_picture, class: "post-profile-img" %>
+          <% else %>
+                <img class="img-circle post-profile-img" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-zsbDeAUd8aY%2FUS7F0ta5d9I%2FAAAAAAAAEKY%2FUL2AAhHj6J8%2Fs1600%2Ffacebook-default-no-profile-pic.jpg&f=1&nofb=1">
           <% end %>
           <%= @user.name %> <%= distance_of_time_in_words(post.created_at, Time.now)%> ago    
           <% pre_like = post.likes.find { |like| like.user_id == current_user.id }%>
@@ -41,7 +43,7 @@
 
 
 
-    <div class="post-body container p-3 my-2 border">
+    <div class="post-body container p-3 my-2 border w-100">
       <p class="text-black-50"><%= post.body%></p>
     </div>
   <%= render 'comments/form', current_user: current_user.id, comment: Comment.new, post_id: post.id %>
