@@ -13,7 +13,7 @@
           <% if pre_like %>
             <%= link_to raw("<i class=\"fas fa-thumbs-up\"></i>"), controller: :likes, action: "comment_destroy", comment_id: comment.id, user_id: @user.id %>
           <% else %>
-            <%= link_to raw("<i class=\"far fa-thumbs-up\"></i>"), controller: :likes, action: "comment_create", method: :post, comment_id: comment.id%>
+            <%= link_to raw("<i class=\"far fa-thumbs-up\"></i>"), controller: :likes, action: "comment_create", comment_id: comment.id%>
           <% end %> <%= comment.likes.count %>
   </p>
   <blockquote class="blockquote"><%= comment.body%></blockquote>
