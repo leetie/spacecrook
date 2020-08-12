@@ -51,9 +51,13 @@
               <a class="nav-link", href="https://nh.gov">Contact</a>
             </li>
             <% if current_user %>
-              <li class="nav-item">
-                <%= link_to raw("<button class=\"btn btn-primary nav-link\" type=\"button\">Friends</button>"), controller: "requests", action: "friends", method: :get, user_id: current_user.id %>
-              </li>
+            <%# weird bug here. friends button tries setting controller:devise if the path is devise/registrations%>
+              <% if controller.controller_path == 'devise/registrations' %>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to raw("<button class=\"btn btn-primary nav-link\" type=\"button\">Friends</button>"), controller: "requests", action: "friends", method: :get, user_id: current_user.id %>
+                </li>
+              <% end %>
             <% end %>
             <li class="nav-item">
               <% if current_user %>
@@ -65,6 +69,11 @@
             <% if !current_user %>
               <li class="nav-item">
                 <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <% if current_user && current_user.profile_picture.attached? %>
+                  <p>Picture</p>
+                <% end %>
               </li>
             <% end %>
             <li class="nav-item dropdown">
