@@ -6,11 +6,13 @@ Rails.application.routes.draw do
   resources :users do
     resources :posts
     resources :requests
-    resource :page
   end
   resources :posts do
     resources :likes
   end
+  resources :pages
+  get "users_index", to: "pages#users_index", action: :users_index
+  get "about", to: "pages#about", action: :about
   get "/requests/friends", to: "requests#friends"
   get "/requests/accept", to: "requests#accept"
   get "/requests/deny", to: "requests#deny"

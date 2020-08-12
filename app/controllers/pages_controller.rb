@@ -5,4 +5,11 @@ class PagesController < ApplicationController
   def index
   end
 
+  def users_index
+    @users = User.all
+  end
+
+  def about
+  end
+
 end

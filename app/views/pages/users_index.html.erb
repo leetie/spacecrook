@@ -1,0 +1,13 @@
+<% @users.each do |user |%>
+  <div class="container mb-3">
+    
+      <% if user.profile_picture.attached? %>
+        <%= image_tag user.profile_picture, class: "post-profile-img" %>
+        <%=user.name%> 
+      <% else %>
+        <img class="img-circle post-profile-img" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-zsbDeAUd8aY%2FUS7F0ta5d9I%2FAAAAAAAAEKY%2FUL2AAhHj6J8%2Fs1600%2Ffacebook-default-no-profile-pic.jpg&f=1&nofb=1">
+        <%=user.name%>
+      <% end %>
+      <%= render 'requests/form', request: Request.new, sent_by: current_user.id, sent_to: user.id %>
+  </div>
+<% end %>

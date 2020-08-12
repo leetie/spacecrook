@@ -1,0 +1,23 @@
+<%= form_with(model: request, local: true) do |form| %>
+  <% if request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(request.errors.count, "error") %> prohibited this request:</h2>
+
+      <ul>
+        <% @request.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="text-field">
+    <%= form.hidden_field :sent_by, value: sent_by %>
+  </div>
+  <div class="text-field">
+    <%= form.hidden_field :sent_to, value: sent_to %>
+  </div>
+  <div class="actions">
+    <%= form.submit value: "Send Request", class: "btn btn-primary" %>
+  </div>
+<% end %>

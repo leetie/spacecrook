@@ -42,7 +42,7 @@ class RequestsController < ApplicationController
     @sent_by.sent_requests << @request
     @sent_to.incoming_requests << @request
     if @request.save
-      flash.notice = "Request made!"
+      flash[:notice] = "Request made!"
       redirect_back fallback_location: root_path
     else
       redirect_to root_path
