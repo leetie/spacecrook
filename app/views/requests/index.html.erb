@@ -1,7 +1,29 @@
 <div class="row">
   <div class="col">
+    <h1 class="h1">Your Friend Requests</h1>
     <% @requests.each do |request| %>
-      <p class="text-muted">Friend request from <%=User.find(request.sent_by).name %></p>
+      <% user = User.find(request.sent_by)%>
+
+      <% if user.profile_picture.attached? %>
+      <%= image_tag user.profile_picture, class: "post-profile-img" %>
+      <%=user.name%> 
+    <% else %>
+      <img class="img-circle post-profile-img" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-zsbDeAUd8aY%2FUS7F0ta5d9I%2FAAAAAAAAEKY%2FUL2AAhHj6J8%2Fs1600%2Ffacebook-default-no-profile-pic.jpg&f=1&nofb=1">
+      <%=user.name%>
+    <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
       <div class="btn-group">
         <%#= link_to raw("<i class=\"far fa-thumbs-up\"></i>"), , method: :post %>
         <%= link_to raw("<button class=\"btn btn-primary\" type=\"button\">Accept</button>"), controller: "requests", action: "accept", sent_by: request.sent_by, sent_to: request.sent_to%>
