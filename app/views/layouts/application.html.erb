@@ -71,8 +71,7 @@
                 <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %>
               </li>
               <li class="nav-item">
-                <% if current_user && current_user.profile_picture.attached? %>
-                  <p>Picture</p>
+                <% if current_user && User.find(current_user.id).profile_picture.attached? %>
                 <% end %>
               </li>
             <% end %>
