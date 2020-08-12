@@ -1,4 +1,5 @@
 <% @user = User.find(comment.user_id) %>
-
-<p class="strong lead"> <%=@user.name%> </p>
+<p class="strong lead">
+<%= image_tag @user.profile_picture, class: "post-profile-img" %>
+ <%=@user.name%> </p>
 <blockquote class="blockquote"><%= comment.body%></blockquote>
