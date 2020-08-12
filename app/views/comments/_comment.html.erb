@@ -1,1 +1,4 @@
-<%= comment.body %><br>
+<% @user = User.find(comment.user_id) %>
+
+<p class="strong lead"> <%=@user.name%> </p>
+<blockquote class="blockquote"><%= comment.body%></blockquote>

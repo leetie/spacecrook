@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+<div class="form-inline">
   <div class="field">
     <%= form.hidden_field :user_id, value: current_user %>
   </div>
@@ -19,10 +19,11 @@
   </div>
 
   <div class="field">
-    <%= form.text_area :body %>
+    <%= form.text_area :body, placeholder: "Add Comment" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit "Post Comment" %>
+  <div class="actions ml-3">
+    <%= form.submit "Comment", class: "btn btn-primary" %>
   </div>
+</div>
 <% end %>

@@ -17,9 +17,7 @@ h1 {
   margin-left: 7px;
 }
 
-.post-picture {
-  object-fit: contain;
-}
+
 .interactions {
   margin-top: 3px;
   background-color: white;
@@ -40,7 +38,6 @@ h1 {
 .post-container {
   border: 2px grey solid;
   border-radius: 5px;
-  padding-bottom: 2px;
   background-color: white;
 }
 body {
@@ -70,6 +67,11 @@ body {
   width: 120px;
   height: 120px;
   border: 2px solid #000000;
+}
+
+.post-profile-img {
+  width: 20px;
+  height: 20px;
 }
 
 .profile-header {
