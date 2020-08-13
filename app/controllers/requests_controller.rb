@@ -4,7 +4,6 @@ class RequestsController < ApplicationController
   end
 
   def accept
-    puts "in the accept method"
     @request = Request.where(sent_to: params[:sent_to], sent_by: params[:sent_by]).first
     @request.status = true
     if @request.save
@@ -27,10 +26,8 @@ class RequestsController < ApplicationController
     @ary = Request.where(status: true, sent_by: @user.id).or(Request.where(status: true, sent_to:@user.id))
 
     other_friend_ids = @ary.map{|i| [i.sent_by, i.sent_to] }
-    puts "other friends are #{other_friend_ids} before flattening"
     other_friend_ids.flatten!
     other_ids = other_friend_ids.select{|i| i.to_s != current_user.id.to_s }
-    puts "now other friend ids are #{other_ids}"
     @friends = User.where(id: other_ids)
   end
 
@@ -38,7 +35,9 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
     @sent_to = User.find(params[:request][:sent_to])
     @sent_by = User.find(params[:request][:sent_by])
-
+    if @sent_to.id == 1 || @sent_to.id == "1"
+      @request.status = true
+    end
     @sent_by.sent_requests << @request
     @sent_to.incoming_requests << @request
     if @request.save
