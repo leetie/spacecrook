@@ -1,5 +1,5 @@
 <% @user = User.find(comment.user_id) %>
-<div class="border border-primary w-50">
+<div class="row ml-1">
   <p class="strong lead">
     <% if @user.profile_picture.attached? %>
       <%= image_tag @user.profile_picture, class: "post-profile-img" %>
@@ -9,12 +9,12 @@
       <%=@user.name%>
     <% end %>
     -  <%= distance_of_time_in_words(comment.created_at, Time.now)%>
-  <% pre_like = comment.likes.find { |like| like.user_id == current_user.id }%>
+    <% pre_like = comment.likes.find { |like| like.user_id == current_user.id }%>
           <% if pre_like %>
             <%= link_to raw("<i class=\"fas fa-thumbs-up\"></i>"), controller: :likes, action: "comment_destroy", comment_id: comment.id, user_id: @user.id %>
           <% else %>
             <%= link_to raw("<i class=\"far fa-thumbs-up\"></i>"), controller: :likes, action: "comment_create", comment_id: comment.id%>
           <% end %> <%= comment.likes.count %>
   </p>
-  <blockquote class="blockquote"><%= comment.body%></blockquote>
 </div>
+    <p class="small"><%= comment.body%></p>

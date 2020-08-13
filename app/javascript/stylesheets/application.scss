@@ -5,6 +5,9 @@ body {
 h1 {
   text-align: center;
 }
+p {
+  word-break: break-all;
+}
 .fa-bell {
   color: rgb(0, 89, 255);
   position: relative;
@@ -35,7 +38,6 @@ h1 {
 
 }
 .post-container {
-  border: 2px grey solid;
   border-radius: 5px;
   background-color: white;
 }
