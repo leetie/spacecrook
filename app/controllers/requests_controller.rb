@@ -27,10 +27,8 @@ class RequestsController < ApplicationController
     @ary = Request.where(status: true, sent_by: @user.id).or(Request.where(status: true, sent_to:@user.id))
 
     other_friend_ids = @ary.map{|i| [i.sent_by, i.sent_to] }
-    puts "other friends are #{other_friend_ids} before flattening"
     other_friend_ids.flatten!
     other_ids = other_friend_ids.select{|i| i.to_s != current_user.id.to_s }
-    puts "now other friend ids are #{other_ids}"
     @friends = User.where(id: other_ids)
   end
 

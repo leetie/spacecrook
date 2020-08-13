@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-
+  before_action :check_if_friends, only: [:index]
   # GET /posts
   # GET /posts.json
   def index
@@ -79,7 +79,25 @@ class PostsController < ApplicationController
     def set_post
       @post = Post.find(params[:id])
     end
-
+    def check_if_friends
+      #check params[:user_id] and see if current user if friends with them through request model
+      @user = current_user
+      @ary = Request.where(status: true, sent_by: @user.id).or(Request.where(status: true, sent_to:@user.id))
+      other_friend_ids = @ary.map{|i| [i.sent_by, i.sent_to] }
+      other_friend_ids.flatten!
+      other_ids = other_friend_ids.select{|i| i.to_s != current_user.id.to_s }
+      @friends = User.where(id: other_ids)
+      if other_ids.include?(params[:user_id].to_i)
+        return
+      elsif current_user.id.to_s == params[:user_id].to_s
+        return
+      elsif params[:user_id].nil?
+        return
+      else
+        flash[:notice] = "You are not friends with that person."
+        redirect_to root_path
+      end
+    end
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:body, :user_id, :picture)
