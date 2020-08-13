@@ -1,47 +1,44 @@
-<% @user = User.find(post.user_id) %>
-<div class="row">
-  <div class="col-2">
-  </div>
-  <div class="col mr-5 mb-5">
-    <div class="row">
-      <div class="col">
-        <div class="post-container">
-          <div class="post-picture">
-            <% if post.picture.attached? %>
-              <%= image_tag post.picture, class: "img-fluid rounded" %>
-            <% end %>
-          </div>
+<% user = User.find(post.user_id) %>
+<div class="page-content page-container" id="page-content">
+    <div class="padding">
+        <div class="row  d-flex">
+            <div class="col">
+                <div class="box box-widget">
+                    <div class="box-header with-border">
+                      <div class="user-block">
+                        <% if user.profile_picture.attached? %>
+                          <%= image_tag user.profile_picture, class: "img-circle" %>
+                        <% else %>
+                          <img class="img-circle" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-zsbDeAUd8aY%2FUS7F0ta5d9I%2FAAAAAAAAEKY%2FUL2AAhHj6J8%2Fs1600%2Ffacebook-default-no-profile-pic.jpg&f=1&nofb=1">
+                        <% end %>
+                       <span class="username"><a href="#" data-abc="true"><%=user.name%></a></span> <span class="description"><%=time_ago_in_words(post.created_at)%></span> </div>
+                        <div class="box-tools"> <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="" data-original-title="Mark as read"> <i class="fa fa-circle-o"></i></button> <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i> </button> <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> </div>
+                    
+                    </div>
+                    <div class="box-body">
+                        <% if post.picture.attached? %>
+                          <%= image_tag post.picture, class: "img-responsive pad" %>
+                        <% end %>
+                        <p><%=post.body%></p>
+                        <% pre_like = post.likes.find { |like| like.user_id == current_user.id }%>
+                        <% if pre_like %>
+                          <%= link_to raw("<i class=\"fas fa-thumbs-up btn btn-default btn-xs\"></i>"), post_like_path(post, pre_like), method: :delete%>
+                        <% else %>
+                          <%= link_to raw("<i class=\"far fa-thumbs-up btn btn-default btn-xs\"></i>"), post_likes_path(post), method: :post %>
+                        <% end %>
+                        <%# add logic here for like/likes comment/comments%>
+                        <span class="pull-right text-muted"><%=post.likes.count%> 
+                        <%= post.likes.count == 1 ? "like" : "likes" %>
+                         - <%=post.comments.count%> 
+                        <%= post.comments.count == 1 ? "comment" : "comments" %>
+                         </span>
+                    </div>
+                    <%# render comments here%>
+                    <%= render partial: "comments/comment", collection: post.comments %>
+                    <%# comment form here %>
+                    <%= render 'comments/form', current_user: current_user.id, comment: Comment.new, post_id: post.id %>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-      <p class="strong font-weight-bolder"><%= post.body%></p>
-    <div class="row">
-      <div class="col">
-        <div class="info">
-          <p><i class="fas fa-clock"></i> Posted by 
-          <% if @user.profile_picture.attached? %>
-            <%= image_tag @user.profile_picture, class: "post-profile-img" %>
-          <% else %>
-                <img class="img-circle post-profile-img" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-zsbDeAUd8aY%2FUS7F0ta5d9I%2FAAAAAAAAEKY%2FUL2AAhHj6J8%2Fs1600%2Ffacebook-default-no-profile-pic.jpg&f=1&nofb=1">
-          <% end %>
-          <%= @user.name %> <%= distance_of_time_in_words(post.created_at, Time.now)%> ago    
-          <% pre_like = post.likes.find { |like| like.user_id == current_user.id }%>
-          <% if pre_like %>
-            <%= link_to raw("<i class=\"fas fa-thumbs-up\"></i>"), post_like_path(post, pre_like), method: :delete, class: "bg-blue"%>
-          <% else %>
-            <%= link_to raw("<i class=\"far fa-thumbs-up\"></i>"), post_likes_path(post), method: :post %>
-          <% end %> <%= post.likes.count %>
-          </p>
-        </div>
-      </div>
-    </div>
-  <%= render 'comments/form', current_user: current_user.id, comment: Comment.new, post_id: post.id %>
-    <%= render partial: "comments/comment", collection: post.comments.reverse %>
-  </div>
 </div>
-
-
-
-
-
-

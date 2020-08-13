@@ -1,20 +1,13 @@
-<% @user = User.find(comment.user_id) %>
-<div class="row ml-1">
-  <p class="strong lead">
-    <% if @user.profile_picture.attached? %>
-      <%= image_tag @user.profile_picture, class: "post-profile-img" %>
-      <%=@user.name%> 
-    <% else %>
-      <img class="img-circle post-profile-img" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-zsbDeAUd8aY%2FUS7F0ta5d9I%2FAAAAAAAAEKY%2FUL2AAhHj6J8%2Fs1600%2Ffacebook-default-no-profile-pic.jpg&f=1&nofb=1">
-      <%=@user.name%>
-    <% end %>
-    -  <%= distance_of_time_in_words(comment.created_at, Time.now)%>
-    <% pre_like = comment.likes.find { |like| like.user_id == current_user.id }%>
-          <% if pre_like %>
-            <%= link_to raw("<i class=\"fas fa-thumbs-up\"></i>"), controller: :likes, action: "comment_destroy", comment_id: comment.id, user_id: @user.id %>
-          <% else %>
-            <%= link_to raw("<i class=\"far fa-thumbs-up\"></i>"), controller: :likes, action: "comment_create", comment_id: comment.id%>
-          <% end %> <%= comment.likes.count %>
-  </p>
-</div>
-    <p class="small"><%= comment.body%></p>
+<%# render this once for each comment %>
+<% user = User.find(comment.user_id)%>
+<div class="box-footer box-comments">
+<div class="box-comment">
+  <% if user.profile_picture.attached? %>
+    <%= image_tag user.profile_picture, class: "img-circle img-sm" %>
+  <% else %>
+    <img class="img-circle img-sm" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-zsbDeAUd8aY%2FUS7F0ta5d9I%2FAAAAAAAAEKY%2FUL2AAhHj6J8%2Fs1600%2Ffacebook-default-no-profile-pic.jpg&f=1&nofb=1">
+  <% end %>
+<div class="comment-text"> <span class="username"> <%=user.name%> <span class="text-muted pull-right"><%=comment.created_at%></span> </span> <%=comment.body%> </div>
+                        </div>
+                    </div>
+              

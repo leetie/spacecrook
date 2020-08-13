@@ -1,6 +1,4 @@
-<div class="box-footer">
-  
-  <%= form_with(model: comment, remote: true) do |form| %>
+<%= form_with(model: comment, local: true) do |form| %>
   <% if comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -21,7 +19,7 @@
   </div>
 
   <div class="field">
-    <%= form.text_area :body, placeholder: "Add Comment", class: "comment-field" %>
+    <%= form.text_area :body, placeholder: "Add Comment" %>
   </div>
 
   <div class="actions ml-3">
@@ -29,4 +27,3 @@
   </div>
 </div>
 <% end %>
-</div>
