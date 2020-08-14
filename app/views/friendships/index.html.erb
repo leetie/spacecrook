@@ -1,5 +1,5 @@
-<h2>@friends here</h2>
-<% @friends.each do |f| %>
-  <%= f.name %><br>
-  <%= f.email %><br>
+<h1>Current user id is <%=current_user.id%></h1>
+<% @friendships.each do |friendship| %>
+  <%=friendship.friend_id%><br>
+  <%= link_to 'Remove Friend', friendship_path(friendship), method: :delete %><br>
 <% end %>

@@ -47,13 +47,6 @@ body {
   background-color: rgb(255, 255, 255);
 }
 
-
-
-
-
-
-
-
 /**
  * Profile image component
  */
@@ -63,7 +56,7 @@ body {
 }
 
 .profile-header-img {
-  padding: 54px;
+  bottom: 30px;
 }
 
 .profile-header-img > img.img-circle {
@@ -103,7 +96,6 @@ body {
 
 
 .container {
-  margin-bottom: 500px
 }
 
 .stretch-card>.card {

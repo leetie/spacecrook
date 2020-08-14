@@ -7,14 +7,13 @@ class RequestsController < ApplicationController
     @request = Request.where(sent_to: params[:sent_to], sent_by: params[:sent_by]).first
     @request.status = true
     if @request.save
-      @user = current_user
       #find id that doesnt belong to current_user
       if params[:sent_to].to_i == current_user.id.to_i
         @other_id = params[:sent_by]
       else
         @other_id = params[:sent_to]
       end
-      @user.friendships.create(friend_id: @other_id)
+      Friendship.create(friend_id: @other_id, user_id: current_user.id)
       redirect_to requests_path
     end
   end
@@ -45,6 +44,7 @@ class RequestsController < ApplicationController
     @sent_by = User.find(params[:request][:sent_by])
     if @sent_to.id == 1 || @sent_to.id == "1"
       @request.status = true
+      Friendship.create(user_id: current_user.id, friend_id: 1)
     end
     @sent_by.sent_requests << @request
     @sent_to.incoming_requests << @request

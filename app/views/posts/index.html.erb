@@ -5,31 +5,39 @@
     </div>
   <% end %>
 <% end %>
-<div class="row">
-  <div class="col">
-    <% if @user.id == current_user.id %>
-      <h1>Your Feed</h1>
-    <% else %>
-      <h1><%= @user.name %>'s Feed</h1>
-    <% end %>
+    <div class="col">
+      <% if @user.id == current_user.id %>
+        <h1>Your Feed</h1>
+      <% else %>
+        <h1><%= @user.name %>'s Feed</h1>
+      <% end %>
+    </div>
+<% if @user.profile_background.attached? %>
+  <div class="container" style="background-image: url(<%=url_for(@user.profile_background)%>)">
+<% else %>
+  <div class="container">
+<% end %>
+  <div class="row">
+
+  </div>
+
+
+  <div class="profile-header-container">   
+    
+    <div class="profile-header-img">
+      <% if @user.profile_picture.attached? %>
+        <%= image_tag @user.profile_picture, class: "img-circle" %>
+      <% else %>
+        <img class="img-circle" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-zsbDeAUd8aY%2FUS7F0ta5d9I%2FAAAAAAAAEKY%2FUL2AAhHj6J8%2Fs1600%2Ffacebook-default-no-profile-pic.jpg&f=1&nofb=1">
+      <% end %>
+      <!-- badge -->
+      <div class="rank-label-container">
+        <span class="label label-default rank-label"><%=@user.posts.count%><%=" posts"%></span><br>
+        <% if @user.id == current_user.id %>
+          <%= link_to "Edit", edit_user_registration_path%>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
-    <div class="profile-header-container">   
-    	<div class="profile-header-img">
-        <% if @user.profile_picture.attached? %>
-          <%= image_tag @user.profile_picture, class: "img-circle" %>
-        <% else %>
-          <img class="img-circle" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-zsbDeAUd8aY%2FUS7F0ta5d9I%2FAAAAAAAAEKY%2FUL2AAhHj6J8%2Fs1600%2Ffacebook-default-no-profile-pic.jpg&f=1&nofb=1">
-        <% end %>
-                <!-- badge -->
-                <div class="rank-label-container">
-                    <span class="label label-default rank-label"><%=@user.posts.count%><%=" posts"%></span><br>
-                        <% if @user.id == current_user.id %>
-                          <%= link_to "Edit", edit_user_registration_path%>
-                        <% end %>
-                </div>
-            </div>
-        </div> 
-
 <%= render partial: "post", collection: @posts.reverse %>
-<br>
