@@ -38,7 +38,7 @@
               <% if controller.controller_path == 'devise/registrations' %>
               <% else %>
                 <li class="nav-item">
-                  <%= link_to raw("<button class=\"btn btn-primary nav-link\" type=\"button\">Friends</button>"), controller: "requests", action: "friends", method: :get, user_id: current_user.id %>
+                  <%= link_to raw("<button class=\"btn btn-primary nav-link\" type=\"button\">Friends</button>"), friendships_path %>
                 </li>
               <% end %>
             <% end %>
