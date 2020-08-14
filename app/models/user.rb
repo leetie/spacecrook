@@ -12,7 +12,8 @@ class User < ApplicationRecord
   has_many :friends, class_name: "User", foreign_key: "user_id"
   validate :acceptable_image
   validates :name, presence: true
-
+  has_many :friendships
+  has_many :friends, through: :friendships
   protected 
   def acceptable_image
     return unless profile_picture.attached?
