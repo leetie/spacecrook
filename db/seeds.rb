@@ -15,13 +15,14 @@ end
 end
 
 #create comments
-50.times do |i|
-  Comment.create(post_id: Faker::Number.within(range: 1..100), user_id: Faker::Number.within(range: 1..20))
+100.times do |i|
+  Comment.create(post_id: Faker::Number.within(range: 1..100), user_id: Faker::Number.within(range: 1..20), body: Faker::TvShows::SouthPark.quote)
 end
 
 #attach profile pictures
-# 21.times do |i|
-#   user = User.find(i+1)
-#   user.profile_picture.attach(Faker::Avatar.image)
-#   user.save
-# end
+20.times do |i|
+  user = User.find(i+1)
+  user.profile_picture.attach(io: File.open("./app/assets/images/#{i+1}.png"), filename: "#{i+1}.png")
+  user.save
+  puts "...done"
+end
