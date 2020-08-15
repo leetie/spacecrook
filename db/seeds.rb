@@ -1,3 +1,4 @@
+require 'faker'
 puts "Seeding..."
 #User.create(name: "Jesse", password: "111111", password_confirmation: "111111", email: "savvyjesse@aol.com")
 
