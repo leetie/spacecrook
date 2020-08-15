@@ -17,12 +17,14 @@ class RequestsController < ApplicationController
       Friendship.create(friend_id: @other_id, user_id: current_user.id)
       redirect_to requests_path
       Friendship.create(user_id: @other_id, friend_id: current_user.id)
+      flash[:notice] = "Request Accepted!"
     end
   end
   def deny
     puts "in the deny method"
     @request = Request.where(sent_to: params[:sent_to], sent_by: params[:sent_by]).first
     @request.destroy
+    flash[:notice] = "Request Denied."
     redirect_to requests_path
   end
   def index
@@ -44,12 +46,12 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
     @sent_to = User.find(params[:request][:sent_to])
     @sent_by = User.find(params[:request][:sent_by])
-    if @sent_to.id == 1 || @sent_to.id == "1"
-      @request.status = true
-      #create a friend for both users
-      Friendship.create(user_id: current_user.id, friend_id: 1)
-      Friendship.create(friend_id: current_user.id, user_id: 1)
-    end
+    # if @sent_to.id == 1 || @sent_to.id == "1"
+    #   @request.status = true
+    #   #create a friend for both users
+    #   Friendship.create(user_id: current_user.id, friend_id: 1)
+    #   Friendship.create(friend_id: current_user.id, user_id: 1)
+    # end
     @sent_by.sent_requests << @request
     @sent_to.incoming_requests << @request
     if @request.save

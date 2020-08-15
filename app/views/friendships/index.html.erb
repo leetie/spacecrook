@@ -1,5 +1,16 @@
-<h1>Current user id is <%=current_user.id%></h1>
-<% @friendships.each do |friendship| %>
-  <%=friendship.friend_id%><br>
-  <%= link_to 'Remove Friend', friendship_path(friendship), method: :delete %><br>
+
+
+<%# render friends here with profile picture like that in _post%>
+<% @friends.each do |friend| %>
+  <% @friendship = Friendship.where(friend_id: friend.id).first %>
+    <div class="profile-header-img">
+      <% if friend.profile_picture.attached? %>
+        <%= image_tag friend.profile_picture, class: "img-circle" %>
+      <% else %>
+        <img class="img-circle" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-zsbDeAUd8aY%2FUS7F0ta5d9I%2FAAAAAAAAEKY%2FUL2AAhHj6J8%2Fs1600%2Ffacebook-default-no-profile-pic.jpg&f=1&nofb=1">
+      <% end %>
+      <!-- badge -->
+      <%= link_to friend.name, user_posts_path(friend) %>
+    </div>
+    <%= link_to "Remove Friend", friendship_path(@friendship), method: :delete, data: {confirm: "Are you sure?"}%>
 <% end %>

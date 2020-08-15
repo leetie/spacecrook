@@ -4,7 +4,8 @@ class FriendshipsController < ApplicationController
   # GET /friendships
   # GET /friendships.json
   def index
-    @friendships = Friendship.where(user_id: current_user.id)
+    @friendships = Friendship.where(user_id: current_user.id).or(Friendship.where(friend_id: current_user.id))
+    @friends = current_user.friends
   end
 
   # GET /friendships/1
@@ -54,9 +55,12 @@ class FriendshipsController < ApplicationController
   # DELETE /friendships/1
   # DELETE /friendships/1.json
   def destroy
+    #delete both sides
+    @other_id = @friendship.friend_id
+    Friendship.where(user_id: @other_id).first.destroy
     @friendship.destroy
     respond_to do |format|
-      format.html { redirect_to friendships_url, notice: 'Friendship was successfully destroyed.' }
+      format.html { redirect_to friendships_url, notice: 'Friend Removed.' }
       format.json { head :no_content }
     end
   end

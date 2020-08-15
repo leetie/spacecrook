@@ -13,7 +13,7 @@
       <div class="btn-group">
         <%#= link_to raw("<i class=\"far fa-thumbs-up\"></i>"), , method: :post %>
         <%= link_to raw("<button class=\"btn btn-primary\" type=\"button\">Accept</button>"), controller: "requests", action: "accept", sent_by: request.sent_by, sent_to: request.sent_to%>
-        <%= link_to raw("<button class=\"btn btn-danger\" type=\"button\">Deny</button>"), controller: "requests", action: "deny"%>
+        <%= link_to raw("<button class=\"btn btn-danger\" type=\"button\">Deny</button>"), controller: "requests", action: "deny", sent_to: request.sent_to, sent_by: request.sent_by%>
       </div>
     <% end %>
   </div>
