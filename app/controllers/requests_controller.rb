@@ -13,8 +13,10 @@ class RequestsController < ApplicationController
       else
         @other_id = params[:sent_to]
       end
+      #create a friend for both users
       Friendship.create(friend_id: @other_id, user_id: current_user.id)
       redirect_to requests_path
+      Friendship.create(user_id: @other_id, friend_id: current_user.id)
     end
   end
   def deny
@@ -44,7 +46,9 @@ class RequestsController < ApplicationController
     @sent_by = User.find(params[:request][:sent_by])
     if @sent_to.id == 1 || @sent_to.id == "1"
       @request.status = true
+      #create a friend for both users
       Friendship.create(user_id: current_user.id, friend_id: 1)
+      Friendship.create(friend_id: current_user.id, user_id: 1)
     end
     @sent_by.sent_requests << @request
     @sent_to.incoming_requests << @request

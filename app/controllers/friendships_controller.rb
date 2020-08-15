@@ -4,7 +4,6 @@ class FriendshipsController < ApplicationController
   # GET /friendships
   # GET /friendships.json
   def index
-    #@friendships = Friendship.where(user_id: current_user.id).or(Friendship.where(friend_id: current_user.id))
     @friendships = Friendship.where(user_id: current_user.id)
   end
 
