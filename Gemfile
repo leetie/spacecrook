@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.1'
+gem 'omniauth'
+gem 'omniauth-twitter'
 # Use attribute-defaults for activerecord defaults
 gem 'attribute-defaults'
 gem 'bootstrap',  '~>4.3.1'
