@@ -22,7 +22,7 @@ class User < ApplicationRecord
       user.uid = auth.uid
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
-      user.confirmed_at = DateTime.now
+      user.skip_confirmation!
     end
   end
   
