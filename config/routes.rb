@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :comments do 
     resources :likes
   end
-  devise_for :users, :path => 'u', :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  devise_for :users, :path => 'u', :controllers => { :omniauth_callbacks => "omniauth_callbacks", registrations: "registrations" }
   resources :users do
     resources :posts
     resources :requests
