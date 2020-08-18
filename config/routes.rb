@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
   resources :pages
   get "users_index", to: "pages#users_index", action: :users_index
+  get "profile", to: "pages#profile_info"
   get "about", to: "pages#about", action: :about
   get "/requests/friends", to: "requests#friends"
   get "/requests/accept", to: "requests#accept"

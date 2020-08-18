@@ -1,0 +1,7 @@
+<h1>Edit your profile</h1>
+<%= form_for @user, :url => edit_user_registration_path(@user) do |f| %>
+  <div class="field">
+    <%= f.file_field :profile_picture %>
+    <%= f.submit "Update", controller: "registrations" %>
+  </div>  
+<% end %>

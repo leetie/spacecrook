@@ -13,6 +13,10 @@ class PagesController < ApplicationController
 
   end
 
+  def profile_info
+    @user = current_user
+  end
+
   def about
   end
 end
