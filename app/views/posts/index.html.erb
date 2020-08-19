@@ -33,9 +33,6 @@
       <!-- badge -->
       <div class="rank-label-container">
         <span class="label label-default rank-label"><%=@user.posts.count%><%=" posts"%></span><br>
-        <% if @user.id == current_user.id %>
-          <%= link_to "Edit", edit_user_registration_path%>
-        <% end %>
       </div>
     </div>
   </div>

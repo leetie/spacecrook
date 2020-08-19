@@ -20,7 +20,7 @@
       <div class="rank-label-container">
         <span class="label label-default rank-label"><%=@user.posts.count%><%=" posts"%></span><br>
         <% if @user.id == current_user.id %>
-          <%= link_to "Edit", edit_user_registration_path%>
+          <%= link_to "User Settings", edit_user_registration_path%>
         <% end %>
       </div>
     </div>
@@ -35,7 +35,18 @@
         <div class="form-group">
           <%= f.label :profile_picture %>
           <%= f.file_field :profile_picture, class: "btn"  %>
-          <%= f.submit "Update", class: "btn btn-primary" %>
+          <%= f.submit "Update!", class: "btn btn-primary" %>
+        </div>  
+      <% end %>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col">
+      <%= form_for @user, :url => user_registration_path do |f| %>
+        <div class="form-group">
+          <%= f.label :profile_background %>
+          <%= f.file_field :profile_background, class: "btn"  %>
+          <%= f.submit "Update!", class: "btn btn-primary" %>
         </div>  
       <% end %>
     </div>
@@ -43,6 +54,5 @@
 </div>
 
 <% @user.posts.with_attached_picture.each do |post| %>
-  <%= post %>
-  <%= image_tag post.picture, class: "" %>
+  <%= image_tag post.picture, class: "img-round" %>
 <% end %>
