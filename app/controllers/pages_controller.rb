@@ -14,7 +14,7 @@ class PagesController < ApplicationController
   end
 
   def profile_info
-    @user = current_user
+    @user = User.includes(:posts).where('id = ?', current_user.id).first
   end
 
   def about

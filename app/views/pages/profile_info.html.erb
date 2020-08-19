@@ -1,7 +1,48 @@
 <h1>Edit your profile</h1>
-<%= form_for @user, :url => edit_user_registration_path(@user) do |f| %>
-  <div class="field">
-    <%= f.file_field :profile_picture %>
-    <%= f.submit "Update", controller: "registrations" %>
-  </div>  
+
+<div class="container">
+  <% if @user.profile_background.attached? %>
+    <div class="container" style="background-image: url(<%=url_for(@user.profile_background)%>)">
+  <% else %>
+  <% end %>
+
+
+
+  <div class="profile-header-container">   
+    
+    <div class="profile-header-img">
+      <% if @user.profile_picture.attached? %>
+        <%= image_tag @user.profile_picture, class: "img-circle" %>
+      <% else %>
+        <img class="img-circle" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-zsbDeAUd8aY%2FUS7F0ta5d9I%2FAAAAAAAAEKY%2FUL2AAhHj6J8%2Fs1600%2Ffacebook-default-no-profile-pic.jpg&f=1&nofb=1">
+      <% end %>
+      <!-- badge -->
+      <div class="rank-label-container">
+        <span class="label label-default rank-label"><%=@user.posts.count%><%=" posts"%></span><br>
+        <% if @user.id == current_user.id %>
+          <%= link_to "Edit", edit_user_registration_path%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col">
+      <%= form_for @user, :url => user_registration_path do |f| %>
+        <div class="form-group">
+          <%= f.label :profile_picture %>
+          <%= f.file_field :profile_picture, class: "btn"  %>
+          <%= f.submit "Update", class: "btn btn-primary" %>
+        </div>  
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% @user.posts.with_attached_picture.each do |post| %>
+  <%= post %>
+  <%= image_tag post.picture, class: "" %>
 <% end %>
