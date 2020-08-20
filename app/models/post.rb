@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   has_one_attached :picture, dependent: :destroy
   validate :acceptable_image
 
+  scope :has_attached_picture, -> { joins(picture_attachment: :blob) }
 
   def acceptable_image
     return unless picture.attached?

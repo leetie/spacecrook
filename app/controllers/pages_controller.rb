@@ -14,7 +14,8 @@ class PagesController < ApplicationController
   end
 
   def profile_info
-    @user = User.includes(:posts).where('id = ?', current_user.id).first
+    @user = current_user
+    @posts = @user.posts.has_attached_picture
   end
 
   def about

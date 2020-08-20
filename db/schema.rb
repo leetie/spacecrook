@@ -46,6 +46,13 @@ ActiveRecord::Schema.define(version: 2020_08_19_193533) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "friends", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_friends_on_user_id"
+  end
+
   create_table "friendships", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.integer "friend_id"
@@ -59,8 +66,10 @@ ActiveRecord::Schema.define(version: 2020_08_19_193533) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "likes_id"
     t.bigint "comment_id"
     t.index ["comment_id"], name: "index_likes_on_comment_id"
+    t.index ["likes_id"], name: "index_likes_on_likes_id"
     t.index ["post_id"], name: "index_likes_on_post_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
@@ -70,6 +79,7 @@ ActiveRecord::Schema.define(version: 2020_08_19_193533) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "body"
     t.bigint "user_id"
+    t.integer "likes"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -117,6 +127,7 @@ ActiveRecord::Schema.define(version: 2020_08_19_193533) do
   add_foreign_key "comments", "users"
   add_foreign_key "friendships", "users"
   add_foreign_key "likes", "comments"
+  add_foreign_key "likes", "likes", column: "likes_id"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"

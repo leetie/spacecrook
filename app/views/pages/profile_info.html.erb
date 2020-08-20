@@ -18,15 +18,15 @@
       <% end %>
       <!-- badge -->
       <div class="rank-label-container">
-        <span class="label label-default rank-label"><%=@user.posts.count%><%=" posts"%></span><br>
-        <% if @user.id == current_user.id %>
-          <%= link_to "User Settings", edit_user_registration_path%>
-        <% end %>
+        <span class="label label-default rank-label">
+          <% if @user.id == current_user.id %>
+            <%= link_to "User Settings", edit_user_registration_path%>
+          <% end %>
+        </span><br>
       </div>
     </div>
   </div>
 </div>
-
 
 <div class="container">
   <div class="row mt-5">
@@ -52,7 +52,9 @@
     </div>
   </div>
 </div>
-
-<% @user.posts.with_attached_picture.each do |post| %>
-  <%= image_tag post.picture, class: "img-round" %>
+<% @posts.each do |post| %>
+  <%= image_tag post.picture  %>
 <% end %>
+<%# @user.posts.with_attached_picture.each do |post| %>
+  <%#= image_tag post.picture, class: "img-round" %>
+<%# end %>
