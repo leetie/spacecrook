@@ -1,4 +1,5 @@
 namespace :add_default_friend do
+  desc "creates friendships for each user and user 1"
   User.all.each do |u|
     #skip if user is user 1 
     if u.id == 1
