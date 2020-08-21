@@ -12,4 +12,5 @@ namespace :add_default_friend do
 
     Friendship.create(user_id: 1, friend_id: u.id)
     Friendship.create(user_id: u.id, friend_id: 1)
+  end
 end
