@@ -11,7 +11,7 @@
                         <% else %>
                           <img class="img-circle" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-zsbDeAUd8aY%2FUS7F0ta5d9I%2FAAAAAAAAEKY%2FUL2AAhHj6J8%2Fs1600%2Ffacebook-default-no-profile-pic.jpg&f=1&nofb=1">
                         <% end %>
-                       <span class="username"><a href="#" data-abc="true"><%=user.name%></a></span> <span class="description"><%=time_ago_in_words(post.created_at)%></span> </div>
+                       <span class="username"><a href="<%=user_posts_path(user)%>" data-abc="true"><%=user.name%></a></span> <span class="description"><%=time_ago_in_words(post.created_at)%></span> </div>
                         <div class="box-tools"> <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="" data-original-title="Mark as read"> <i class="fa fa-circle-o"></i></button> <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i> </button> <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> </div>
                     
                     </div>

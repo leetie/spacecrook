@@ -5,14 +5,15 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    #on root page there is no user_id in the url
+    #gets posts where user_id equals current_user.id OR any of their friends ids
     if params[:user_id]
       @user = User.find(params[:user_id])
-      @posts = Post.where(user_id: params[:user_id]).order(:created_at)
+      @posts = Post.where(user_id: params[:user_id]).or(Post.where(user_id: @user.friends.ids))
     else
       @user = User.find(current_user.id)
-      @posts = Post.where(user_id: current_user.id)
+      @posts = Post.where(user_id: current_user.id).or(Post.where(user_id: @user.friend.ids))
     end
-    #@posts = Post.where(user_id: params[:user_id]).order(:created_at)
   end
 
   # GET /posts/1
