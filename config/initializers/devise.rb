@@ -146,7 +146,7 @@ Devise.setup do |config|
   if Rails.env == "development"
     config.allow_unconfirmed_access_for = nil
   else
-    config.allow_unconfirmed_access_for = 2.days
+    config.allow_unconfirmed_access_for = nil
   end
 
 
