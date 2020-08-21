@@ -40,7 +40,7 @@
       <% end %>
     </div>
   </div>
-  <div class="row mt-5">
+  <div class="row">
     <div class="col">
       <%= form_for @user, :url => user_registration_path do |f| %>
         <div class="form-group">
@@ -52,9 +52,8 @@
     </div>
   </div>
 </div>
-<% @posts.each do |post| %>
-  <%= image_tag post.picture  %>
-<% end %>
-<%# @user.posts.with_attached_picture.each do |post| %>
-  <%#= image_tag post.picture, class: "img-round" %>
-<%# end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <%= render partial: "picture", collection: @posts, as: :post %>
+  </div>
+</div>

@@ -18,6 +18,9 @@ p {
   font-weight: bold;
   margin-left: 7px;
 }
+.picture:hover {
+  border: 3px solid rgb(0, 89, 255);
+}
 .comment-field {
   height: 30px;
   width: 200px;

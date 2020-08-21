@@ -1,0 +1,4 @@
+<div class="picture-container">
+  <%= link_to 'Delete', post, method: :delete %>
+  <a href="<%=user_posts_path(post.user_id)%>" class="thumbnail"><%= image_tag post.picture, class: "thumbnail picture" %></a>
+</div>
