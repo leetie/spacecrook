@@ -3,6 +3,7 @@ puts "Seeding..."
 
 if Rails.env == "development"
   #create users
+  User.create(name: ENV['USERNAME'], password: ENV['PASSWORD'], password_confirmation: ENV['PASSWORD'], email: "#{ENV['EMAIL']}", confirmed_at: DateTime.now)
   20.times do |i| 
     User.create(name: Faker::Name.unique.name, email: "#{i+1}@aol.com", password: "111111", password_confirmation: "111111", confirmed_at: DateTime.now)
   end

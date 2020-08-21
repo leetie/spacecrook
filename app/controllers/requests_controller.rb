@@ -21,7 +21,6 @@ class RequestsController < ApplicationController
     end
   end
   def deny
-    puts "in the deny method"
     @request = Request.where(sent_to: params[:sent_to], sent_by: params[:sent_by]).first
     @request.destroy
     flash[:notice] = "Request Denied."

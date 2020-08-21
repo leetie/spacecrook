@@ -15,6 +15,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   has_many :friendships
   has_many :friends, through: :friendships
+  after_create :add_first_friend
   
   
   def twitter
@@ -46,6 +47,16 @@ class User < ApplicationRecord
 
   def email_required?
     false
+  end
+
+  #add me as a friend automatically when users are created
+  def add_first_friend
+    #dont add myself as a friend
+    if self.id == 1
+      return
+    end
+    Friendship.create(user_id: self.id, friend_id: 1)
+    Friendship.create(user_id: 1, friend_id: self.id)
   end
 
   
