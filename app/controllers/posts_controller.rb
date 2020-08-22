@@ -9,10 +9,10 @@ class PostsController < ApplicationController
     #gets posts where user_id equals current_user.id OR any of their friends ids
     if params[:user_id]
       @user = User.find(params[:user_id])
-      @posts = Post.where(user_id: params[:user_id])
+      @posts = Post.where(user_id: params[:user_id]).order(:created_at)
     else
       @user = User.find(current_user.id)
-      @posts = Post.where(user_id: current_user.id).or(Post.where(user_id: @user.friends.ids))
+      @posts = Post.where(user_id: current_user.id).or(Post.where(user_id: @user.friends.ids)).order(:created_at)
     end
   end
 
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     respond_to do |format|
       if @post.save
-        format.html { redirect_to user_posts_path(@post.user_id), notice: 'Post was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
         STDOUT.puts "ERRORS HERE"
@@ -94,21 +94,6 @@ class PostsController < ApplicationController
         flash[:notice] = "You are not friends with that person"
         redirect_to root_path
       end
-      # @ary = Request.where(status: true, sent_by: @user.id).or(Request.where(status: true, sent_to:@user.id))
-      # other_friend_ids = @ary.map{|i| [i.sent_by, i.sent_to] }
-      # other_friend_ids.flatten!
-      # other_ids = other_friend_ids.select{|i| i.to_s != current_user.id.to_s }
-      # @friends = User.where(id: other_ids)
-      # if other_ids.include?(params[:user_id].to_i)
-      #   return
-      # elsif current_user.id.to_s == params[:user_id].to_s
-      #   return
-      # elsif params[:user_id].nil?
-      #   return
-      # else
-      #   flash[:notice] = "You are not friends with that person."
-      #   redirect_to root_path
-      # end
     end
     # Only allow a list of trusted parameters through.
     def post_params
