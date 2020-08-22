@@ -27,7 +27,8 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to user_posts_path(Post.find(@comment.post_id).user_id), notice: 'Comment was successfully created.' }
+        #fix redirection
+        format.html { redirect_to root_path, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { redirect_to user_posts_path(Post.find(@comment.post_id).user_id) }
