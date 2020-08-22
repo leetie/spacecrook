@@ -7,10 +7,6 @@ class PostsController < ApplicationController
   def index
     #on root page there is no user_id in the url
     #gets posts where user_id equals current_user.id OR any of their friends ids
-    #TODO 
-      #root path provides no user_id
-      #when going to a friends page, it shows all of THEIR friends
-      #posts on their feed as well
     if params[:user_id]
       @user = User.find(params[:user_id])
       @posts = Post.where(user_id: params[:user_id])
@@ -87,13 +83,13 @@ class PostsController < ApplicationController
     def check_if_friends
       #check params[:user_id] and see if current user if friends with them through request model
       @user = current_user
-      if current_user.friends.ids.include?(params[:user_id])
-        return
+      if current_user.friends.ids.include?(params[:user_id].to_i)
+        return 
       elsif params[:user_id].nil?
-        return
+        return 
       elsif params[:user_id] == current_user.id
         redirect_to root_path
-        return
+        return 
       else
         flash[:notice] = "You are not friends with that person"
         redirect_to root_path
