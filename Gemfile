@@ -5,7 +5,7 @@ ruby '2.7.1'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'activerecord-session_store'
-
+gem 'will_paginate'
 # Use attribute-defaults for activerecord defaults
 gem 'attribute-defaults'
 gem 'bootstrap',  '~>4.3.1'

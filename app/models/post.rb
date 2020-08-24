@@ -6,7 +6,8 @@ class Post < ApplicationRecord
   validate :acceptable_image
 
   scope :has_attached_picture, -> { joins(picture_attachment: :blob) }
-
+  self.per_page = 10
+  
   def acceptable_image
     return unless picture.attached?
 
