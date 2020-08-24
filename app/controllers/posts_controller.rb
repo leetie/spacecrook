@@ -9,10 +9,10 @@ class PostsController < ApplicationController
     #gets posts where user_id equals current_user.id OR any of their friends ids
     if params[:user_id]
       @user = User.find(params[:user_id])
-      @posts = Post.where(user_id: params[:user_id]).paginate(page: params[:page]).order(:created_at)
+      @posts = Post.where(user_id: params[:user_id]).page(params[:page]).order(created_at: :desc)
     else
       @user = User.find(current_user.id)
-      @posts = Post.where(user_id: current_user.id).or(Post.where(user_id: @user.friends.ids)).paginate(page: params[:page]).order(:created_at)
+      @posts = Post.where(user_id: current_user.id).or(Post.where(user_id: @user.friends.ids)).page(params[:page]).order(created_at: :desc)
     end
   end
 

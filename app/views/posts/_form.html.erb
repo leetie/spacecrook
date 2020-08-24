@@ -10,14 +10,20 @@
       </ul>
     </div>
   <% end %>
-	<div class="text-area">
-    <%= form.label :body %>
-		<%= form.text_area :body %>
-	</div>
-  <div class="image-upload">
-    <%= form.label :picture %>
-    <%= form.file_field :picture %>
+  <div class="form-group">
+    <div class="text-area">
+      <%= form.label :body %>
+      <%= form.text_area :body, class: "form-control" %>
+    </div>
   </div>
+
+  <div class="form-group">
+    <div class="image-upload">
+      <%= form.label :picture %>
+      <%= form.file_field :picture %>
+    </div>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
