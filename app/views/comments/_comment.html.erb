@@ -3,7 +3,7 @@
 <div class="box-footer box-comments">
   <div class="box-comment">
     <% if user.profile_picture.attached? %>
-      <%= image_tag user.profile_picture, class: "img-circle img-sm" %>
+      <%= image_tag user.profile_picture.variant(resize_to_limit: [200,200]), class: "img-circle img-sm" %>
     <% else %>
       <img class="img-circle img-sm" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-zsbDeAUd8aY%2FUS7F0ta5d9I%2FAAAAAAAAEKY%2FUL2AAhHj6J8%2Fs1600%2Ffacebook-default-no-profile-pic.jpg&f=1&nofb=1">
     <% end %>

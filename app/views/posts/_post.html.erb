@@ -7,7 +7,7 @@
                     <div class="box-header with-border">
                       <div class="user-block">
                         <% if user.profile_picture.attached? %>
-                          <%= image_tag user.profile_picture, class: "img-circle" %>
+                          <%= image_tag user.profile_picture.variant(resize_to_limit: [200,200]), class: "img-circle" %>
                         <% else %>
                           <img class="img-circle" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-zsbDeAUd8aY%2FUS7F0ta5d9I%2FAAAAAAAAEKY%2FUL2AAhHj6J8%2Fs1600%2Ffacebook-default-no-profile-pic.jpg&f=1&nofb=1">
                         <% end %>
@@ -17,7 +17,9 @@
                     </div>
                     <div class="box-body">
                         <% if post.picture.attached? %>
-                          <%= image_tag post.picture, class: "img-responsive pad" %>
+                          <div class="container d-flex justify-content-center">
+                            <%= image_tag post.picture.variant(resize_to_limit: [500,500]), class: "img-responsive pad" %>
+                          </div>
                         <% end %>
                         <p><%= auto_link(post.body) %></p>
                         <% pre_like = post.likes.find { |like| like.user_id == current_user.id }%>

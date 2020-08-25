@@ -34,9 +34,6 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-    # if @post.body 
-    #   @post.body = @post.body.gsub(URI.regexp, '<a href="\0">\0</a>')
-    # end
     @post.user_id = current_user.id
     respond_to do |format|
       if @post.save
