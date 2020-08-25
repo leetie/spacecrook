@@ -1,13 +1,20 @@
 <%# render this once for each comment %>
 <% user = User.find(comment.user_id)%>
 <div class="box-footer box-comments">
-<div class="box-comment">
-  <% if user.profile_picture.attached? %>
-    <%= image_tag user.profile_picture, class: "img-circle img-sm" %>
-  <% else %>
-    <img class="img-circle img-sm" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-zsbDeAUd8aY%2FUS7F0ta5d9I%2FAAAAAAAAEKY%2FUL2AAhHj6J8%2Fs1600%2Ffacebook-default-no-profile-pic.jpg&f=1&nofb=1">
-  <% end %>
-<div class="comment-text"> <span class="username"> <%=user.name%> <span class="text-muted pull-right"><%=comment.created_at%></span> </span> <%=comment.body%> </div>
-                        </div>
-                    </div>
+  <div class="box-comment">
+    <% if user.profile_picture.attached? %>
+      <%= image_tag user.profile_picture, class: "img-circle img-sm" %>
+    <% else %>
+      <img class="img-circle img-sm" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-zsbDeAUd8aY%2FUS7F0ta5d9I%2FAAAAAAAAEKY%2FUL2AAhHj6J8%2Fs1600%2Ffacebook-default-no-profile-pic.jpg&f=1&nofb=1">
+    <% end %>
+    <div class="comment-text">
+      <span class="username"> <%=link_to user.name, user_posts_path(user)%>
+        <span class="text-muted pull-right">
+          <%=comment.created_at%>
+        </span>
+      </span>
+      <%= auto_link(comment.body)%>
+    </div>
+  </div>
+</div>
               

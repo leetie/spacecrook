@@ -19,7 +19,7 @@
                         <% if post.picture.attached? %>
                           <%= image_tag post.picture, class: "img-responsive pad" %>
                         <% end %>
-                        <p><%=post.body%></p>
+                        <p><%= auto_link(post.body) %></p>
                         <% pre_like = post.likes.find { |like| like.user_id == current_user.id }%>
                         <% if pre_like %>
                           <%= link_to raw("<i class=\"fas fa-thumbs-up btn btn-default btn-xs\"></i>"), post_like_path(post, pre_like), method: :delete%>
