@@ -260,6 +260,9 @@ p {
   margin: 0 0 10px;
   word-wrap: break-word;
 }
+.comment-text {
+  word-break: break-word;
+}
 
 .btn-default {
   background-color: #f4f4f4;
