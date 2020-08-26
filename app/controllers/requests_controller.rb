@@ -18,6 +18,7 @@ class RequestsController < ApplicationController
       redirect_to requests_path
       Friendship.create(user_id: @other_id, friend_id: current_user.id)
       flash[:notice] = "Request Accepted!"
+      @request.destroy
     end
   end
   def deny
@@ -27,7 +28,7 @@ class RequestsController < ApplicationController
     redirect_to requests_path
   end
   def index
-    @requests = Request.where(sent_to: current_user.id, status: false)
+    @requests = Request.where(sent_to: current_user.id)
   end
   
   def friends
