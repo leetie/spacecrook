@@ -37,14 +37,10 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     respond_to do |format|
       if @post.save
+        ActionCable.server.broadcast('post_channel', content: render_post(@post))
         format.html { redirect_to root_path, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
-        STDOUT.puts "ERRORS HERE"
-        STDOUT.puts @post.errors[:picture]
-        @post.errors.each do |error|
-          STDOUT.puts error
-        end
         format.html { redirect_to new_user_post_path(current_user.id), notice: @post.errors.full_messages }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
@@ -79,6 +75,9 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+    end
+    def render_post(post)
+      render(partial: 'post', locals: {post: post})
     end
     def check_if_friends
       #check params[:user_id] and see if current user if friends with them through request model
