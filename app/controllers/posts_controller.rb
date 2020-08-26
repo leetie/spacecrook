@@ -77,7 +77,7 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
     end
     def render_post(post)
-      render(partial: 'post', locals: {post: post})
+      render_to_string(partial: 'post', locals: {post: post})
     end
     def check_if_friends
       #check params[:user_id] and see if current user if friends with them through request model
