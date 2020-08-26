@@ -12,5 +12,5 @@
       <!-- badge -->
       <%= link_to friend.name, user_posts_path(friend) %>
     </div>
-    <%= link_to "Remove Friend", friendship_path(@friendship), method: :delete, data: {confirm: "Are you sure?"}%>
+    <%= link_to "Remove Friend", friendship_path(@friendship), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger mb-3 btn-sm"%>
 <% end %>
