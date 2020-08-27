@@ -10,7 +10,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'%>
 
     <script src="https://kit.fontawesome.com/d4aeccea42.js" crossorigin="anonymous"></script>
-
+    <% if current_user %>
+      <%= javascript_tag do %>
+        window.current_user_id = "<%=j current_user.id%>";
+      <% end %>
+    <% end %>
 
 
 

@@ -11,9 +11,10 @@ consumer.subscriptions.create("PostChannel", {
   },
 
   received(data) {
-    // Called when there's incoming data on the websocket for this channel
-    console.log("data.content below")
-    console.log(data.content)
-    $('#post-container').prepend(data.content);
+    //current_user_id is set in application.html.erb
+    var user_ids = data.user_ids
+    if (user_ids.includes(Number(current_user_id))) {
+      $('#post-container').prepend(data.content);
+    }
   }
 });
