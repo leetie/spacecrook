@@ -32,7 +32,7 @@
       <% end %>
       <!-- badge -->
       <div class="rank-label-container">
-        <span class="label label-default rank-label"><%=@user.friends.count%><%=" #{@user.friends.count > 1 ? "friends" : "friend"}"%></span><br>
+        <span class="label label-default rank-label"><%=@user.friends.count%><%=" #{@user.friends.count == 1 ? "friend" : "friends"}"%></span><br>
       </div>
     </div>
   </div>
