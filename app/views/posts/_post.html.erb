@@ -32,7 +32,7 @@
                     <div class="box-body">
                         <% if post.picture.attached? %>
                           <div class="container d-flex justify-content-center">
-                            <%= image_tag post.picture.variant(resize_to_limit: [500,500]), class: "img-responsive pad" %>
+                            <%= link_to image_tag(post.picture.variant(resize_to_limit: [500,500])), url_for(post.picture) %>
                           </div>
                         <% end %>
                         <p><%= auto_link(post.body) %></p>
