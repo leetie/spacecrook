@@ -1,16 +1,26 @@
 
 
 <%# render friends here with profile picture like that in _post%>
-<% @friends.each do |friend| %>
-  <% @friendship = Friendship.where(friend_id: friend.id).first %>
-    <div class="profile-header-img">
-      <% if friend.profile_picture.attached? %>
-        <%= image_tag friend.profile_picture.variant(resize_to_limit: [200,200]), class: "img-circle" %>
-      <% else %>
-        <img class="img-circle" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-zsbDeAUd8aY%2FUS7F0ta5d9I%2FAAAAAAAAEKY%2FUL2AAhHj6J8%2Fs1600%2Ffacebook-default-no-profile-pic.jpg&f=1&nofb=1">
-      <% end %>
-      <!-- badge -->
+<div class="row mx-auto">
+  <% @friends.each do |friend| %>
+    <div class="col-2 mx-auto">
+      <div class="row"> 
+        <% @friendship = Friendship.where(friend_id: friend.id).first %>
+        <div class="profile-header-img">
+          <% if friend.profile_picture.attached? %>
+            <%= image_tag friend.profile_picture.variant(resize_to_limit: [200,200]), class: "img-circle" %>
+          <% else %>
+            <img class="img-circle" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-zsbDeAUd8aY%2FUS7F0ta5d9I%2FAAAAAAAAEKY%2FUL2AAhHj6J8%2Fs1600%2Ffacebook-default-no-profile-pic.jpg&f=1&nofb=1">
+          <% end %>
+          <!-- badge -->
+        </div>
+      </div>
+      <div class="row">
       <%= link_to friend.name, user_posts_path(friend) %>
+      </div>
+      <div class="row">
+        <%= link_to "Remove Friend", friendship_path(@friendship), method: :delete, data: {confirm: "Are you sure?"}%>
+      </div>
     </div>
-    <%= link_to "Remove Friend", friendship_path(@friendship), method: :delete, data: {confirm: "Are you sure?"}%>
-<% end %>
+  <% end %>
+</div>
